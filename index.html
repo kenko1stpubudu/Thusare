@@ -189,6 +189,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .sec-badge{display:inline-block;background:var(--g7);color:#fff;font-size:10px;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:2px 10px;margin-bottom:8px}
 .emoji-big{font-size:28px;display:block;margin-bottom:8px}
+/* WHATSAPP */
+.wa-section{margin-top:14px}
+.wa-divider{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.wa-divider span{font-size:10px;color:var(--ink4);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.wa-divider::before,.wa-divider::after{content:'';flex:1;height:1px;background:var(--g2)}
+.wa-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:11px 8px;border-radius:12px;border:none;cursor:pointer;
+  font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:600;
+  transition:all .2s;text-decoration:none;color:#fff;}
+.wa-btn svg{width:17px;height:17px;flex-shrink:0}
+.wa-btn.wa1{background:#25D366;}
+.wa-btn.wa1:hover{background:#1da851;transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,211,102,.4)}
+.wa-btn.wa2{background:#075E54;}
+.wa-btn.wa2:hover{background:#054840;transform:translateY(-1px);box-shadow:0 4px 16px rgba(7,94,84,.4)}
 </style>
 </head>
 <body>
@@ -613,10 +628,54 @@ async function stepSummary(){
   setTimeout(function(){chat.appendChild(r);scrollBot();},300);
 }
 
+function buildWAMsg(){
+  var isR=d.type==='Repeat';
+  var t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  var dt=new Date().toLocaleDateString('en-GB');
+  var msg='*NEW REGISTRATION - Thusare Talking Hands*\n';
+  msg+='--------------------------------\n';
+  msg+='*Name:* '+d.name+'\n';
+  msg+='*Type:* '+d.type+' Customer\n';
+  if(!isR){
+    msg+='*Phone:* '+d.phone+'\n';
+    if(d.email&&d.email!=='--') msg+='*Email:* '+d.email+'\n';
+    msg+='*Visitor:* '+d.visitor+'\n';
+    if(d.nationality&&d.nationality!=='--') msg+='*Nationality:* '+d.nationality+'\n';
+    msg+='*Heard from:* '+d.heardFrom+'\n';
+  }
+  msg+='--------------------------------\n';
+  msg+='*Service:* '+d.service.label+'\n';
+  msg+='*Price:* '+d.service.price+'\n';
+  msg+='*Therapist:* '+d.therapist+'\n';
+  msg+='*Payment:* '+d.payment+'\n';
+  msg+='--------------------------------\n';
+  msg+='Time: '+t+' | '+dt;
+  return encodeURIComponent(msg);
+}
+
+function openWA(num){
+  var msg=buildWAMsg();
+  window.open('https://wa.me/'+num+'?text='+msg,'_blank');
+}
+
 async function finalConfirm(){
   var btn=document.getElementById('confirmBtn'); if(btn)btn.disabled=true;
   userMsg(L().btnConfirm);
   await botMsg(M().final(d.name,d.therapist,d.type==='Repeat'),600);
+
+  var waSVG='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.522 5.83L.057 23.27a.75.75 0 00.914.914l5.44-1.465A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.722 9.722 0 01-4.964-1.36l-.356-.211-3.688.994.994-3.688-.211-.356A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>';
+
+  var wr=document.createElement('div'); wr.className='row';
+  var waHtml='<div class="wa-section">'
+    +'<div class="wa-divider"><span>Send to Staff via WhatsApp</span></div>'
+    +'<div class="wa-btns">'
+    +'<button class="wa-btn wa1" onclick="openWA(94717776960)">'+waSVG+' +94717776960</button>'
+    +'<button class="wa-btn wa2" onclick="openWA(94779896183)">'+waSVG+' +94779896183</button>'
+    +'</div></div>';
+
+  wr.innerHTML='<div class="av b" style="opacity:0"></div>'
+    +'<div><div class="bub b" style="max-width:92%">'+waHtml+'</div></div>';
+  setTimeout(function(){chat.appendChild(wr);scrollBot();},400);
 }
 
 function onSend(){
