@@ -26,12 +26,40 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .hdr-logo{display:flex;align-items:center;flex-shrink:0}
 .hdr-logo img{height:36px;width:auto}
 .hdr-spacer{flex:1}
-.lang-btns{display:flex;gap:5px;align-items:center;flex-shrink:0}
+.lang-btns{display:flex;gap:6px;align-items:center;flex-shrink:0;position:relative}
 .lang-btn{border:1.5px solid rgba(110,217,154,.35);background:transparent;color:var(--g3);
   border-radius:8px;padding:5px 11px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;
   cursor:pointer;transition:all .18s;letter-spacing:.03em}
 .lang-btn:hover{background:rgba(110,217,154,.12);border-color:var(--g3)}
 .lang-btn.active{background:var(--g6);color:#fff;border-color:var(--g6)}
+/* LANG DROPDOWN */
+.lang-globe{
+  width:32px;height:32px;border-radius:8px;
+  border:1.5px solid rgba(110,217,154,.35);background:transparent;
+  color:var(--g3);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all .18s;flex-shrink:0;position:relative;
+}
+.lang-globe:hover,.lang-globe.open{background:rgba(110,217,154,.15);border-color:var(--g3)}
+.lang-globe.lang-active{background:var(--g6);border-color:var(--g6)}
+.lang-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:var(--g9);border:1px solid var(--g7);
+  border-radius:14px;padding:6px;min-width:180px;
+  box-shadow:0 8px 32px rgba(0,0,0,.35);
+  display:none;flex-direction:column;gap:2px;z-index:999;
+}
+.lang-dropdown.open{display:flex}
+.lang-opt{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:10px;cursor:pointer;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;
+  color:var(--g3);transition:all .15s;border:none;background:transparent;
+  text-align:left;width:100%;
+}
+.lang-opt:hover{background:var(--g8);color:#fff}
+.lang-opt.active{background:var(--g6);color:#fff;font-weight:600}
+.lang-opt .flag{font-size:18px;width:24px;text-align:center}
+.lang-sep{height:1px;background:var(--g8);margin:3px 4px}
 .hdr-live{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--g3);
   padding-left:8px;border-left:1px solid rgba(110,217,154,.2)}
 .home-btn{
@@ -128,7 +156,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .decl-no{padding:10px 18px;border-radius:10px;background:transparent;color:var(--r);
   border:1.5px solid var(--r);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer}
 /* PAYMENT */
-.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
 .pay-card{border:1.5px solid var(--g2);background:var(--white);border-radius:12px;
   padding:12px;text-align:center;cursor:pointer;transition:all .2s}
 .pay-card:hover{background:var(--gold);border-color:var(--gold)}
@@ -204,6 +232,42 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .wa-btn.wa1:hover{background:#1da851;transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,211,102,.4)}
 .wa-btn.wa2{background:#075E54;}
 .wa-btn.wa2:hover{background:#054840;transform:translateY(-1px);box-shadow:0 4px 16px rgba(7,94,84,.4)}
+/* GOOGLE FORM SUBMIT BTN */
+.form-submit-btn{
+  width:100%;display:flex;align-items:center;gap:10px;
+  padding:13px 16px;border-radius:12px;border:none;
+  background:linear-gradient(135deg,#4285F4,#1a73e8);
+  color:#fff;cursor:pointer;font-family:'Outfit',sans-serif;
+  font-size:13.5px;font-weight:600;transition:all .2s;margin-bottom:12px;
+}
+.form-submit-btn:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(66,133,244,.45)}
+.form-submit-btn svg{width:20px;height:20px;flex-shrink:0}
+.form-submit-btn span:nth-child(2){flex:1;text-align:left}
+.form-badge{
+  background:rgba(255,255,255,.25);border-radius:20px;
+  padding:2px 8px;font-size:10px;font-weight:600;
+  letter-spacing:.04em;white-space:nowrap;
+}
+
+/* LOOKUP CARD */
+.lookup-card{
+  background:linear-gradient(135deg,var(--g0),var(--gold0));
+  border:1.5px solid var(--g3);border-radius:14px;
+  padding:14px 16px;margin-top:10px;
+}
+.lookup-found{display:flex;flex-direction:column;gap:6px}
+.lookup-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px}
+.lookup-lbl{color:var(--ink3)}
+.lookup-val{font-weight:600;color:var(--ink);text-align:right;max-width:60%}
+.lookup-actions{display:flex;gap:8px;margin-top:10px}
+.lookup-yes{flex:1;padding:9px;border-radius:10px;background:var(--g7);color:#fff;
+  border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer}
+.lookup-edit{padding:9px 14px;border-radius:10px;background:transparent;
+  color:var(--ink3);border:1.5px solid var(--g2);
+  font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer}
+.lookup-notfound{text-align:center;padding:8px 0;font-size:13px;color:var(--ink3)}
+/* PHONE FIRST input hint */
+.ph-hint{font-size:11px;color:var(--ink4);margin-top:5px;padding-left:2px}
 </style>
 </head>
 <body>
@@ -213,9 +277,20 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <img src="data:image/png;base64,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" alt="Thusare Talking Hands"/>
     </div>
     <div class="hdr-spacer"></div>
-    <div class="lang-btns">
+    <div class="lang-btns" id="langBtns">
       <button class="lang-btn active" id="btnEN" onclick="setLang('en')">English</button>
-      <button class="lang-btn" id="btnJA" onclick="setLang('ja')">日本語</button>
+      <button class="lang-globe" id="btnGlobe" onclick="toggleLangMenu(event)" title="More languages">🌐</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-opt" id="opt_ja" onclick="setLang('ja')"><span class="flag">🇯🇵</span>日本語</button>
+        <button class="lang-opt" id="opt_si" onclick="setLang('si')"><span class="flag">🇱🇰</span>සිංහල</button>
+        <button class="lang-opt" id="opt_ta" onclick="setLang('ta')"><span class="flag">🇱🇰</span>தமிழ்</button>
+        <button class="lang-opt" id="opt_hi" onclick="setLang('hi')"><span class="flag">🇮🇳</span>हिन्दी</button>
+        <div class="lang-sep"></div>
+        <button class="lang-opt" id="opt_zh" onclick="setLang('zh')"><span class="flag">🇨🇳</span>中文</button>
+        <button class="lang-opt" id="opt_fr" onclick="setLang('fr')"><span class="flag">🇫🇷</span>Français</button>
+        <button class="lang-opt" id="opt_de" onclick="setLang('de')"><span class="flag">🇩🇪</span>Deutsch</button>
+        <button class="lang-opt" id="opt_ko" onclick="setLang('ko')"><span class="flag">🇰🇷</span>한국어</button>
+      </div>
     </div>
     <button class="home-btn" onclick="goHome()" id="homeBtn" title="Restart">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -250,8 +325,8 @@ var T = {
     lTourist:'Tourist', lBusiness:'Business Visitor', lResident:'Resident',
     hearOpts:['Regular','Google','Tripadvisor','Web','Facebook / SNS','Friend','Other'],
     hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
-    payOpts:['Cash','Card','Online Transfer','QR Pay'],
-    payIco:['💵','💳','📱','🔗'],
+    payOpts:['Cash','Card','Online Transfer','QR Pay','Loyalty Card','Gift Voucher'],
+    payIco:['💵','💳','📱','🔗','⭐','🎁'],
     steps:['Welcome','Customer Type','Phone & Email','Visitor Type','Nationality','How You Found Us','Service','Therapist','Declaration','Payment','Complete!'],
     namePh:'Your full name', phonePh:'📱 Phone number (+94…)', emailPh:'📧 Email address', natPh:'e.g. Sri Lankan, Japanese, British…',
     sumLbls:['👤 Name','🌟 Type','📱 Phone','📧 Email','🌍 Nationality','🏠 Visitor','💡 Source','💆 Service','👐 Therapist','💳 Payment','💰 Price'],
@@ -264,7 +339,7 @@ var T = {
       natQ: 'What is your <strong>nationality</strong>? 🌏<br><small style="color:var(--ink3)">Optional – you may skip</small>',
       heardQ: '<span class="sec-badge">One last thing</span><br>How did you <strong>hear about us</strong>? 🤔',
       serviceQ: 'Great! 🎉 Please select your preferred <strong>treatment</strong> 👇',
-      therapistQ: function(s,p){ return '<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>Please select your <strong>therapist</strong> 👇<br><small style="color:var(--ink3)">Ask our staff if unsure</small>'; },
+      therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 Check with reception first</span>'; return svc+'Please <strong>ask our reception staff</strong> who is available right now, then select below 👇<br>'+badge; },
       declIntro: function(t){ return 'Wonderful! <span class="hi">'+t+'</span> will be your therapist. 🙏<br><br>Please read and <span class="gold">agree</span> to the declaration below 👇'; },
       declTitle: '📋 I declare that I understand and agree to the following:',
       declItems: ['I have not consumed alcohol or sleeping pills.','If I have a chronic illness or am pregnant, I have a doctors permission.','I will inform management immediately if I feel any discomfort.','Thusare Talking Hands is not responsible for problems after leaving the center.','It is forbidden to receive treatment in underwear or undressed.','CCTV is activated for security reasons.'],
@@ -283,8 +358,8 @@ var T = {
     lTourist:'観光客', lBusiness:'ビジネス訪問者', lResident:'在住者',
     hearOpts:['常連','Google','Tripadvisor','ウェブ','Facebook / SNS','友人','その他'],
     hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
-    payOpts:['現金','カード','オンライン振込','QRコード払い'],
-    payIco:['💵','💳','📱','🔗'],
+    payOpts:['現金','カード','オンライン振込','QRコード払い','ロイヤルティ','ギフト券'],
+    payIco:['💵','💳','📱','🔗','⭐','🎁'],
     steps:['ようこそ','お客様タイプ','電話・メール','訪問者タイプ','国籍','きっかけ','サービス','セラピスト','同意書','お支払い','登録完了！'],
     namePh:'お名前（フルネーム）', phonePh:'📱 電話番号', emailPh:'📧 メールアドレス', natPh:'例：日本、スリランカ、イギリス…',
     sumLbls:['👤 お名前','🌟 タイプ','📱 電話番号','📧 メール','🌍 国籍','🏠 訪問者種別','💡 きっかけ','💆 サービス','👐 セラピスト','💳 お支払い','💰 料金'],
@@ -297,7 +372,7 @@ var T = {
       natQ: '<strong>国籍</strong>をお知らせください 🌏<br><small style="color:var(--ink3)">任意 – スキップ可能</small>',
       heardQ: '<span class="sec-badge">最後に</span><br>当店を<strong>どのようにお知りになりましたか</strong>？ 🤔',
       serviceQ: '素晴らしい！🎉 ご希望の<strong>施術メニュー</strong>をお選びください 👇',
-      therapistQ: function(s,p){ return (s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':'')+'ご希望の<strong>セラピスト</strong>をお選びください 👇<br><small style="color:var(--ink3)">ご不明な場合はスタッフにお尋ねください</small>'; },
+      therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 まずスタッフにご確認ください</span>'; return svc+'スタッフに<strong>現在対応可能なセラピスト</strong>をお尋ねいただき、以下からお選びください 👇<br>'+badge; },
       declIntro: function(th){ return '素晴らしい！<span class="hi">'+th+'</span>さんがご担当します。🙏<br><br>以下の<strong>同意書</strong>をお読みいただき、<span class="gold">同意</span>してください 👇'; },
       declTitle: '📋 私は以下の事項を理解し、同意します：',
       declItems: ['アルコールや睡眠薬を摂取していません。','慢性疾患や妊娠中の場合は、医師の許可を得ています。','不快感を感じた場合、すぐにスタッフに報告します。','施設を離れた後の問題についてThusare Talking Handsは責任を負いません。','下着姿や裸での施術は禁止されています。','セキュリティのため、CCTVが稼働しています。'],
@@ -326,6 +401,240 @@ var SERVICES = [
 var THERAPISTS = ['Kosala','Rumesh','Kethees','Pushpakaran','Subaharan','Taniya','Jonathan','Eranga','Devinda','Wathsala','Sasanka'];
 
 var d = {name:'',phone:'',email:'',type:'',visitor:'',nationality:'',heardFrom:'',service:null,therapist:'',payment:''};
+
+// ── EXTRA LANGUAGE TRANSLATIONS ──
+T.si = {
+  live:'Live', inputPh:'ඔබගේ පිළිතුර ලියන්න…', btnCont:'ඉදිරියට →', btnSkip:'Skip',
+  btnYes:'✅ ඔව් – එකඟ වෙමි', btnNo:'✗ නැත', btnConfirm:'✅ Confirm කර ලියාපදිංචිය සම්පූර්ණ කරන්න',
+  lNew:'🌟 නව ගනුදෙනුකරු', lRepeat:'🔄 නැවත පැමිණීම',
+  lTourist:'සංචාරක', lBusiness:'ව්‍යාපාරික', lResident:'පදිංචිකරු',
+  hearOpts:['නිතර','Google','Tripadvisor','Web','Facebook / SNS','මිතුරෙකු','වෙනත්'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['මුදල්','Card','Online Transfer','QR','Loyalty Card','Gift Voucher'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['ආයුබෝවන්','ගනුදෙනුකරු','දුරකතන & Email','පැමිණීමේ හේතුව','ජාතිකත්වය','දැනගත් ආකාරය','සේවාව','චිකිත්සකයා','ප්‍රකාශය','ගෙවීම','සම්පූර්ණයි!'],
+  namePh:'ඔබගේ සම්පූර්ණ නම', phonePh:'📱 දුරකතන අංකය', emailPh:'📧 Email ලිපිනය', natPh:'උදා: ශ්‍රී ලාංකික, ජපන්…',
+  sumLbls:['👤 නම','🌟 වර්ගය','📱 දු.අ.','📧 Email','🌍 ජාතිකත්වය','🏠 පැමිණීම','💡 මූලාශ්‍රය','💆 සේවාව','👐 චිකිත්සකයා','💳 ගෙවීම','💰 මිල'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> වෙත ආයුබෝවන්!<br><br>දෘශ්‍යාබාධිත චිකිත්සකයින් ලබා දෙන <span class="gold">Japanese Shiatsu</span> ශරීර ප්‍රතිකාර. 🏆 2012 සිට<br><br>ඔබගේ <strong>නම</strong> ලියන්න 👇'; },
+    hello:function(n){ return 'සුභ දවසක් <span class="hi">'+n+'</span>! 😊<br><br>ඔබ <strong>නව</strong> ගනුදෙනුකරුවෙකිද නැතිනම් <strong>කලිනුත්</strong> පැමිණ ඇද්ද?'; },
+    repeatWelcome:function(n){ return 'ආයෙමත් ඔබව දකිමු <span class="hi">'+n+'</span>! 🙏💚<br><br>සේවාව සහ චිකිත්සකයා select කරන්න:'; },
+    phoneSec:'<span class="sec-badge">පෞද්ගලික තොරතුරු</span><br><strong>දුරකතන</strong> සහ <strong>Email</strong> ලබා දෙන්න 📱',
+    visitorQ:'ඔබ <strong>සංචාරකයෙකිද</strong>, <strong>ව්‍යාපාරිකයෙකිද</strong> නැතිනම් <strong>පදිංචිකරුවෙකිද</strong>? 🌍',
+    natQ:'ඔබගේ <strong>ජාතිකත්වය</strong> කුමක්ද? 🌏<br><small style="color:var(--ink3)">Optional – skip කරන්න</small>',
+    heardQ:'<span class="sec-badge">අවසාන ප්‍රශ්නය</span><br>Thusare ගැන <strong>කොහෙන් දැනගත්තාද</strong>? 🤔',
+    serviceQ:'ඉතා හොඳ! 🎉 ඔබ කැමති <strong>සේවාව</strong> select කරන්න 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 කලිනුත් reception හි විමසන්න</span>'; return svc+'දැනට <strong>available චිකිත්සකයා</strong> reception staff ගෙන් විමසා, පහතින් select කරන්න 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span> ඔබගේ චිකිත්සකයා. 🙏<br><br>පහත <strong>ප්‍රකාශය</strong> කියවා <span class="gold">එකඟ</span> වන්න 👇'; },
+    declTitle:'📋 මම පහත කරුණු තේරුම් ගෙන එකඟ වෙමි:',
+    declItems:['මම මත්පැන් හෝ නිදි පෙති ගෙන නැත.','රෝගයක් ඇත්නම් වෛද්‍ය අනුමැතිය ඇත.','අපහසුවක් ඇතිවූ විගස management ට දන්වන්නෙමි.','Center හැර ගිය පසු ගැටළු සඳහා Thusare වගකිව නොහේ.','ඇඳුම ඉවත් කිරීම තහනම්.','ආරක්ෂාව සඳහා CCTV active ය.'],
+    declNo:'කණගාටුයි. ප්‍රකාශයට එකඟ නොවී ප්‍රතිකාරය ලැබිය නොහේ. 🙏',
+    payQ:'ආසන්නයි! ✨<br><br><strong>ගෙවීම් ක්‍රමය</strong> select කරන්න 💳',
+    payQr:'<strong>ගෙවීම් ක්‍රමය</strong> select කරන්න 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong> — ලියාපදිංචිය සම්පූර්ණ!<br>Booking Summary:'; },
+    final:function(n,t,r){ return '🙏 <strong>ස්තූතියි '+n+'!</strong><br><br>ලියාපදිංචිය සම්පූර්ණ. 💚<br><br><span class="hi">'+t+'</span> ඔබව ඉදිරියේදී හමුවෙනවා!<br><br>'+(r?'ආයෙමත් ඔබව දකිමු! 🔄':'Thusare Talking Hands ට ස්වාගතයි! 🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'ඉහත buttons use කරන්න. 🙂 Staff ගෙන් විමසන්න.'
+  }
+};
+T.ta = {
+  live:'நேரலை', inputPh:'உங்கள் பதிலை உள்ளிடவும்…', btnCont:'தொடரவும் →', btnSkip:'தவிர்',
+  btnYes:'✅ ஆம் – ஒப்புக்கொள்கிறேன்', btnNo:'✗ இல்லை', btnConfirm:'✅ உறுதிப்படுத்தி பதிவை முடிக்கவும்',
+  lNew:'🌟 புதிய வாடிக்கையாளர்', lRepeat:'🔄 மீண்டும் வருகை',
+  lTourist:'சுற்றுலாப் பயணி', lBusiness:'வணிக பார்வையாளர்', lResident:'குடியிருப்பாளர்',
+  hearOpts:['வழக்கமான','Google','Tripadvisor','இணையம்','Facebook / SNS','நண்பர்','மற்றவை'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['பணம்','கார்டு','ஆன்லைன்','QR','Loyalty Card','Gift Voucher'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['வரவேற்கிறோம்','வாடிக்கையாளர் வகை','தொலைபேசி & மின்னஞ்சல்','பார்வையாளர் வகை','தேசியம்','எப்படி அறிந்தீர்கள்','சேவை','சிகிச்சையாளர்','அறிவிப்பு','கட்டணம்','முடிந்தது!'],
+  namePh:'உங்கள் முழு பெயர்', phonePh:'📱 தொலைபேசி எண்', emailPh:'📧 மின்னஞ்சல்', natPh:'எ.கா: இலங்கையர், ஜப்பானியர்…',
+  sumLbls:['👤 பெயர்','🌟 வகை','📱 தொலைபேசி','📧 மின்னஞ்சல்','🌍 தேசியம்','🏠 பார்வை','💡 மூலம்','💆 சேவை','👐 சிகிச்சையாளர்','💳 கட்டணம்','💰 விலை'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> இல் வரவேற்கிறோம்!<br><br>பார்வை குறைபாடுள்ள சிகிச்சையாளர்களால் வழங்கப்படும் <span class="gold">Japanese Shiatsu</span> சிகிச்சை. 🏆 2012 முதல்<br><br>உங்கள் <strong>பெயரை</strong> உள்ளிடவும் 👇'; },
+    hello:function(n){ return 'வணக்கம் <span class="hi">'+n+'</span>! 😊<br><br>நீங்கள் <strong>புதிய</strong> வாடிக்கையாளரா அல்லது <strong>முன்பு</strong> வந்திருக்கிறீர்களா?'; },
+    repeatWelcome:function(n){ return 'மீண்டும் உங்களை சந்திப்பதில் மகிழ்ச்சி <span class="hi">'+n+'</span>! 🙏💚<br><br>சேவையும் சிகிச்சையாளரும் தேர்ந்தெடுக்கவும்:'; },
+    phoneSec:'<span class="sec-badge">தனிப்பட்ட தகவல்</span><br><strong>தொலைபேசி</strong> மற்றும் <strong>மின்னஞ்சல்</strong> உள்ளிடவும் 📱',
+    visitorQ:'நீங்கள் <strong>சுற்றுலாப் பயணியா</strong>, <strong>வணிக பார்வையாளரா</strong> அல்லது <strong>குடியிருப்பாளரா</strong>? 🌍',
+    natQ:'உங்கள் <strong>தேசியம்</strong> என்ன? 🌏<br><small style="color:var(--ink3)">விருப்பமானால் – தவிர்க்கலாம்</small>',
+    heardQ:'<span class="sec-badge">கடைசி கேள்வி</span><br>எங்களைப் பற்றி <strong>எப்படி அறிந்தீர்கள்</strong>? 🤔',
+    serviceQ:'சிறப்பு! 🎉 விரும்பிய <strong>சிகிச்சையை</strong> தேர்ந்தெடுக்கவும் 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 முதலில் ஊழியர்களிடம் கேளுங்கள்</span>'; return svc+'இப்போது <strong>கிடைக்கக்கூடிய சிகிச்சையாளரை</strong> ஊழியர்களிடம் கேட்டு கீழே தேர்ந்தெடுக்கவும் 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span> உங்கள் சிகிச்சையாளர். 🙏<br><br>கீழே உள்ள <strong>அறிவிப்பை</strong> படித்து <span class="gold">ஒப்புக்கொள்ளுங்கள்</span> 👇'; },
+    declTitle:'📋 நான் பின்வருவனவற்றை புரிந்துகொண்டு ஒப்புக்கொள்கிறேன்:',
+    declItems:['நான் மது அல்லது தூக்க மாத்திரைகள் உட்கொள்ளவில்லை.','நீரிழிவு நோய் அல்லது கர்ப்பம் இருந்தால் மருத்துவரின் அனுமதி உள்ளது.','எந்த அசௌகரியமும் ஏற்பட்டால் உடனே தெரிவிப்பேன்.','மையத்தை விட்டு சென்ற பிறகு ஏற்படும் பிரச்சனைகளுக்கு Thusare பொறுப்பு அல்ல.','உள்ளாடை அல்லது நிர்வாணமாக சிகிச்சை பெறுவது தடைசெய்யப்பட்டுள்ளது.','பாதுகாப்பிற்காக CCTV இயங்குகிறது.'],
+    declNo:'மன்னிக்கவும். அறிவிப்பை ஒப்புக்கொள்ளாமல் சிகிச்சை பெற முடியாது. 🙏',
+    payQ:'கிட்டத்தட்ட முடிந்தது! ✨<br><br><strong>கட்டண முறையை</strong> தேர்ந்தெடுக்கவும் 💳',
+    payQr:'<strong>கட்டண முறையை</strong> தேர்ந்தெடுக்கவும் 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong> — பதிவு முடிந்தது!<br>Booking சுருக்கம்:'; },
+    final:function(n,t,r){ return '🙏 <strong>நன்றி '+n+'!</strong><br><br>பதிவு முடிந்தது. 💚<br><br><span class="hi">'+t+'</span> விரைவில் உங்களைச் சந்திப்பார்!<br><br>'+(r?'மீண்டும் வரவேற்கிறோம்! 🔄':'Thusare Talking Hands இல் வரவேற்கிறோம்! 🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'மேலே உள்ள பொத்தான்களைப் பயன்படுத்தவும். 🙂'
+  }
+};
+T.hi = {
+  live:'लाइव', inputPh:'अपना उत्तर टाइप करें…', btnCont:'आगे बढ़ें →', btnSkip:'छोड़ें',
+  btnYes:'✅ हाँ – सहमत हूँ', btnNo:'✗ नहीं', btnConfirm:'✅ पुष्टि करें और पंजीकरण पूरा करें',
+  lNew:'🌟 नया ग्राहक', lRepeat:'🔄 पुनः आगंतुक',
+  lTourist:'पर्यटक', lBusiness:'व्यापारिक आगंतुक', lResident:'निवासी',
+  hearOpts:['नियमित','Google','Tripadvisor','वेब','Facebook / SNS','मित्र','अन्य'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['नकद','कार्ड','ऑनलाइन ट्रांसफर','QR','Loyalty Card','Gift Voucher'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['स्वागत','ग्राहक प्रकार','फोन & ईमेल','आगंतुक प्रकार','राष्ट्रीयता','कैसे जाना','सेवा','चिकित्सक','घोषणा','भुगतान','पूर्ण!'],
+  namePh:'आपका पूरा नाम', phonePh:'📱 फोन नंबर', emailPh:'📧 ईमेल पता', natPh:'जैसे: भारतीय, श्रीलंकाई…',
+  sumLbls:['👤 नाम','🌟 प्रकार','📱 फोन','📧 ईमेल','🌍 राष्ट्रीयता','🏠 आगंतुक','💡 स्रोत','💆 सेवा','👐 चिकित्सक','💳 भुगतान','💰 मूल्य'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> में आपका स्वागत है!<br><br>दृष्टिबाधित चिकित्सकों द्वारा प्रामाणिक <span class="gold">Japanese Shiatsu</span> थेरेपी. 🏆 2012 से<br><br>कृपया अपना <strong>नाम</strong> दर्ज करें 👇'; },
+    hello:function(n){ return 'नमस्ते <span class="hi">'+n+'</span>! 😊<br><br>क्या आप <strong>नए</strong> ग्राहक हैं या <strong>पहले</strong> आ चुके हैं?'; },
+    repeatWelcome:function(n){ return 'फिर से स्वागत है <span class="hi">'+n+'</span>! 🙏💚<br><br>अपनी सेवा और चिकित्सक चुनें:'; },
+    phoneSec:'<span class="sec-badge">व्यक्तिगत जानकारी</span><br><strong>फोन</strong> और <strong>ईमेल</strong> दर्ज करें 📱',
+    visitorQ:'आप <strong>पर्यटक</strong>, <strong>व्यापारिक आगंतुक</strong> या <strong>निवासी</strong> हैं? 🌍',
+    natQ:'आपकी <strong>राष्ट्रीयता</strong> क्या है? 🌏<br><small style="color:var(--ink3)">वैकल्पिक – छोड़ सकते हैं</small>',
+    heardQ:'<span class="sec-badge">अंतिम प्रश्न</span><br>हमारे बारे में <strong>कैसे जाना</strong>? 🤔',
+    serviceQ:'बढ़िया! 🎉 अपनी पसंदीदा <strong>सेवा</strong> चुनें 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 पहले रिसेप्शन से पूछें</span>'; return svc+'कृपया <strong>रिसेप्शन स्टाफ से पूछें</strong> कि अभी कौन उपलब्ध है, फिर नीचे चुनें 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span> आपके चिकित्सक होंगे. 🙏<br><br>नीचे <strong>घोषणा</strong> पढ़कर <span class="gold">सहमति</span> दें 👇'; },
+    declTitle:'📋 मैं निम्नलिखित बातों को समझता/समझती हूँ और सहमत हूँ:',
+    declItems:['मैंने शराब या नींद की गोलियाँ नहीं ली हैं.','यदि पुरानी बीमारी या गर्भावस्था है तो डॉक्टर की अनुमति है.','कोई भी असुविधा होने पर तुरंत सूचित करूँगा/करूँगी.','केंद्र छोड़ने के बाद होने वाली समस्याओं के लिए Thusare जिम्मेदार नहीं है.','अंडरवियर में या बिना कपड़ों के उपचार लेना मना है.','सुरक्षा के लिए CCTV सक्रिय है.'],
+    declNo:'खेद है. घोषणा से सहमत हुए बिना उपचार नहीं मिल सकता. 🙏',
+    payQ:'लगभग हो गया! ✨<br><br><strong>भुगतान विधि</strong> चुनें 💳',
+    payQr:'<strong>भुगतान विधि</strong> चुनें 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong> — पंजीकरण पूर्ण!<br>बुकिंग सारांश:'; },
+    final:function(n,t,r){ return '🙏 <strong>धन्यवाद '+n+'!</strong><br><br>पंजीकरण पूर्ण हो गया. 💚<br><br><span class="hi">'+t+'</span> जल्द ही आपसे मिलेंगे!<br><br>'+(r?'फिर से स्वागत है! 🔄':'Thusare Talking Hands में आपका स्वागत है! 🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'कृपया ऊपर के बटन उपयोग करें. 🙂'
+  }
+};
+T.zh = {
+  live:'在线', inputPh:'请输入您的回答…', btnCont:'继续 →', btnSkip:'跳过',
+  btnYes:'✅ 是 – 我同意', btnNo:'✗ 否', btnConfirm:'✅ 确认并完成注册',
+  lNew:'🌟 新客户', lRepeat:'🔄 回头客',
+  lTourist:'游客', lBusiness:'商务访客', lResident:'居民',
+  hearOpts:['常客','Google','Tripadvisor','网络','Facebook / SNS','朋友','其他'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['现金','刷卡','网上转账','QR码','会员积分','礼品券'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['欢迎','客户类型','电话和邮箱','访客类型','国籍','如何了解','服务','治疗师','声明','付款','完成！'],
+  namePh:'您的全名', phonePh:'📱 电话号码', emailPh:'📧 电子邮件', natPh:'例如：中国人、日本人…',
+  sumLbls:['👤 姓名','🌟 类型','📱 电话','📧 邮箱','🌍 国籍','🏠 访客','💡 来源','💆 服务','👐 治疗师','💳 付款','💰 价格'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span>欢迎来到<strong>Thusare Talking Hands</strong>！<br><br>由视障治疗师提供正宗的<span class="gold">日本指压</span>疗法。🏆 自2012年起<br><br>请输入您的<strong>姓名</strong> 👇'; },
+    hello:function(n){ return '您好，<span class="hi">'+n+'</span>！ 😊<br><br>您是<strong>新</strong>客户还是曾经<strong>光临</strong>过？'; },
+    repeatWelcome:function(n){ return '欢迎回来，<span class="hi">'+n+'</span>！ 🙏💚<br><br>请选择服务和治疗师：'; },
+    phoneSec:'<span class="sec-badge">个人信息</span><br>请输入<strong>电话</strong>和<strong>邮箱</strong> 📱',
+    visitorQ:'您是<strong>游客</strong>、<strong>商务访客</strong>还是<strong>居民</strong>？ 🌍',
+    natQ:'您的<strong>国籍</strong>是什么？ 🌏<br><small style="color:var(--ink3)">可选 – 可跳过</small>',
+    heardQ:'<span class="sec-badge">最后一个问题</span><br>您是<strong>如何了解</strong>我们的？ 🤔',
+    serviceQ:'太好了！🎉 请选择您偏好的<strong>疗程</strong> 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 请先咨询前台</span>'; return svc+'请先<strong>询问前台工作人员</strong>现在哪位治疗师可以接待，然后在下方选择 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span>将是您的治疗师。🙏<br><br>请阅读并<span class="gold">同意</span>以下声明 👇'; },
+    declTitle:'📋 我声明我理解并同意以下事项：',
+    declItems:['我未饮酒或服用安眠药。','如有慢性病或怀孕，已获得医生许可。','如感到任何不适，将立即通知工作人员。','离开中心后发生的问题，Thusare不承担责任。','禁止穿内衣或裸体接受治疗。','出于安全原因，CCTV已启动。'],
+    declNo:'抱歉。未同意声明则无法接受治疗。🙏',
+    payQ:'快完成了！✨<br><br>请选择<strong>付款方式</strong> 💳',
+    payQr:'请选择<strong>付款方式</strong> 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong> — 注册完成！<br>预约摘要：'; },
+    final:function(n,t,r){ return '🙏 <strong>谢谢'+n+'！</strong><br><br>注册已完成。💚<br><br><span class="hi">'+t+'</span>即将为您服务！<br><br>'+(r?'欢迎再次光临！🔄':'欢迎来到Thusare Talking Hands！🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'请使用上方的按钮进行选择。🙂'
+  }
+};
+T.fr = {
+  live:'En ligne', inputPh:'Tapez votre réponse…', btnCont:'Continuer →', btnSkip:'Passer',
+  btnYes:'✅ OUI – J\'accepte', btnNo:'✗ Non', btnConfirm:'✅ Confirmer et terminer l\'inscription',
+  lNew:'🌟 Nouveau client', lRepeat:'🔄 Client fidèle',
+  lTourist:'Touriste', lBusiness:'Visiteur d\'affaires', lResident:'Résident',
+  hearOpts:['Habituel','Google','Tripadvisor','Web','Facebook / SNS','Ami','Autre'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['Espèces','Carte','Virement','QR','Carte fidélité','Bon cadeau'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['Bienvenue','Type de client','Téléphone & Email','Type de visiteur','Nationalité','Comment connu','Service','Thérapeute','Déclaration','Paiement','Terminé!'],
+  namePh:'Votre nom complet', phonePh:'📱 Numéro de téléphone', emailPh:'📧 Adresse e-mail', natPh:'ex: Français, Sri Lankais…',
+  sumLbls:['👤 Nom','🌟 Type','📱 Tél','📧 Email','🌍 Nationalité','🏠 Visiteur','💡 Source','💆 Service','👐 Thérapeute','💳 Paiement','💰 Prix'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span>Bienvenue chez <strong>Thusare Talking Hands</strong>!<br><br>Thérapie <span class="gold">Shiatsu japonais</span> authentique par des thérapeutes malvoyants. 🏆 Depuis 2012<br><br>Veuillez entrer votre <strong>nom</strong> 👇'; },
+    hello:function(n){ return 'Bonjour <span class="hi">'+n+'</span>! 😊<br><br>Êtes-vous un <strong>nouveau</strong> client ou avez-vous déjà <strong>visité</strong>?'; },
+    repeatWelcome:function(n){ return 'Bienvenue à nouveau <span class="hi">'+n+'</span>! 🙏💚<br><br>Choisissez votre service et thérapeute:'; },
+    phoneSec:'<span class="sec-badge">Infos personnelles</span><br>Entrez votre <strong>téléphone</strong> et <strong>email</strong> 📱',
+    visitorQ:'Êtes-vous <strong>touriste</strong>, <strong>visiteur d\'affaires</strong> ou <strong>résident</strong>? 🌍',
+    natQ:'Quelle est votre <strong>nationalité</strong>? 🌏<br><small style="color:var(--ink3)">Optionnel</small>',
+    heardQ:'<span class="sec-badge">Dernière question</span><br>Comment avez-vous <strong>entendu parler</strong> de nous? 🤔',
+    serviceQ:'Parfait! 🎉 Choisissez votre <strong>traitement</strong> préféré 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 Demandez à la réception</span>'; return svc+'Veuillez <strong>demander à la réception</strong> quel thérapeute est disponible, puis sélectionnez ci-dessous 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span> sera votre thérapeute. 🙏<br><br>Lisez et <span class="gold">acceptez</span> la déclaration ci-dessous 👇'; },
+    declTitle:'📋 Je déclare comprendre et accepter ce qui suit:',
+    declItems:['Je n\'ai pas consommé d\'alcool ou de somnifères.','Si j\'ai une maladie chronique ou suis enceinte, j\'ai la permission d\'un médecin.','Je signalerai immédiatement tout inconfort.','Thusare n\'est pas responsable des problèmes après avoir quitté le centre.','Il est interdit de recevoir un traitement en sous-vêtements ou nu.','La CCTV est activée pour des raisons de sécurité.'],
+    declNo:'Désolé. Vous devez accepter la déclaration pour recevoir un traitement. 🙏',
+    payQ:'Presque terminé! ✨<br><br>Choisissez votre <strong>mode de paiement</strong> 💳',
+    payQr:'Choisissez votre <strong>mode de paiement</strong> 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong> — Inscription terminée!<br>Résumé de réservation:'; },
+    final:function(n,t,r){ return '🙏 <strong>Merci '+n+'!</strong><br><br>Inscription terminée. 💚<br><br><span class="hi">'+t+'</span> vous accueillera bientôt!<br><br>'+(r?'Ravi de vous revoir! 🔄':'Bienvenue chez Thusare! 🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'Veuillez utiliser les boutons ci-dessus. 🙂'
+  }
+};
+T.de = {
+  live:'Online', inputPh:'Antwort eingeben…', btnCont:'Weiter →', btnSkip:'Überspringen',
+  btnYes:'✅ JA – Ich stimme zu', btnNo:'✗ Nein', btnConfirm:'✅ Bestätigen und Registrierung abschließen',
+  lNew:'🌟 Neukunde', lRepeat:'🔄 Stammkunde',
+  lTourist:'Tourist', lBusiness:'Geschäftsreisender', lResident:'Einwohner',
+  hearOpts:['Stamm','Google','Tripadvisor','Web','Facebook / SNS','Freund','Sonstiges'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['Bargeld','Karte','Überweisung','QR','Treuekarte','Gutschein'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['Willkommen','Kundentyp','Tel. & E-Mail','Besuchertyp','Nationalität','Wie erfahren','Service','Therapeut','Erklärung','Zahlung','Fertig!'],
+  namePh:'Ihr vollständiger Name', phonePh:'📱 Telefonnummer', emailPh:'📧 E-Mail-Adresse', natPh:'z.B. Deutsch, Sri-lankisch…',
+  sumLbls:['👤 Name','🌟 Typ','📱 Tel','📧 E-Mail','🌍 Nationalität','🏠 Besucher','💡 Quelle','💆 Service','👐 Therapeut','💳 Zahlung','💰 Preis'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span>Willkommen bei <strong>Thusare Talking Hands</strong>!<br><br>Authentische <span class="gold">japanische Shiatsu</span>-Therapie von sehbehinderten Therapeuten. 🏆 Seit 2012<br><br>Bitte geben Sie Ihren <strong>Namen</strong> ein 👇'; },
+    hello:function(n){ return 'Guten Tag <span class="hi">'+n+'</span>! 😊<br><br>Sind Sie ein <strong>neuer</strong> Kunde oder haben Sie uns schon <strong>besucht</strong>?'; },
+    repeatWelcome:function(n){ return 'Willkommen zurück <span class="hi">'+n+'</span>! 🙏💚<br><br>Bitte wählen Sie Service und Therapeut:'; },
+    phoneSec:'<span class="sec-badge">Persönliche Daten</span><br>Bitte <strong>Telefon</strong> und <strong>E-Mail</strong> eingeben 📱',
+    visitorQ:'Sind Sie <strong>Tourist</strong>, <strong>Geschäftsreisender</strong> oder <strong>Einwohner</strong>? 🌍',
+    natQ:'Was ist Ihre <strong>Nationalität</strong>? 🌏<br><small style="color:var(--ink3)">Optional</small>',
+    heardQ:'<span class="sec-badge">Letzte Frage</span><br>Wie haben Sie von uns <strong>erfahren</strong>? 🤔',
+    serviceQ:'Wunderbar! 🎉 Bitte wählen Sie Ihre <strong>Behandlung</strong> 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 Zuerst an der Rezeption fragen</span>'; return svc+'Bitte <strong>fragen Sie an der Rezeption</strong>, wer gerade verfügbar ist, dann unten auswählen 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span> wird Ihr Therapeut sein. 🙏<br><br>Bitte lesen und <span class="gold">stimmen Sie zu</span> 👇'; },
+    declTitle:'📋 Ich erkläre, dass ich Folgendes verstehe und zustimme:',
+    declItems:['Ich habe keinen Alkohol oder Schlaftabletten eingenommen.','Bei chronischer Krankheit oder Schwangerschaft habe ich eine ärztliche Genehmigung.','Bei Beschwerden informiere ich sofort das Personal.','Thusare ist nicht verantwortlich für Probleme nach Verlassen des Zentrums.','Behandlung in Unterwäsche oder unbekleidet ist verboten.','CCTV ist aus Sicherheitsgründen aktiviert.'],
+    declNo:'Es tut uns leid. Sie müssen der Erklärung zustimmen. 🙏',
+    payQ:'Fast fertig! ✨<br><br>Bitte wählen Sie Ihre <strong>Zahlungsart</strong> 💳',
+    payQr:'Bitte wählen Sie Ihre <strong>Zahlungsart</strong> 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong> — Registrierung abgeschlossen!<br>Buchungsübersicht:'; },
+    final:function(n,t,r){ return '🙏 <strong>Danke '+n+'!</strong><br><br>Registrierung abgeschlossen. 💚<br><br><span class="hi">'+t+'</span> wird Sie bald empfangen!<br><br>'+(r?'Schön, Sie wiederzusehen! 🔄':'Willkommen bei Thusare! 🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'Bitte verwenden Sie die Schaltflächen oben. 🙂'
+  }
+};
+T.ko = {
+  live:'온라인', inputPh:'답변을 입력하세요…', btnCont:'계속 →', btnSkip:'건너뛰기',
+  btnYes:'✅ 예 – 동의합니다', btnNo:'✗ 아니오', btnConfirm:'✅ 확인 및 등록 완료',
+  lNew:'🌟 신규 고객', lRepeat:'🔄 재방문 고객',
+  lTourist:'관광객', lBusiness:'비즈니스 방문자', lResident:'거주자',
+  hearOpts:['단골','Google','Tripadvisor','웹','Facebook / SNS','친구','기타'],
+  hearIco:['🔄','🔍','🦅','🌐','📘','👥','✨'],
+  payOpts:['현금','카드','온라인 이체','QR','로열티 카드','상품권'],
+  payIco:['💵','💳','📱','🔗','⭐','🎁'],
+  steps:['환영합니다','고객 유형','전화 & 이메일','방문자 유형','국적','알게 된 경로','서비스','치료사','선언','결제','완료!'],
+  namePh:'성함', phonePh:'📱 전화번호', emailPh:'📧 이메일 주소', natPh:'예: 한국인, 일본인…',
+  sumLbls:['👤 이름','🌟 유형','📱 전화','📧 이메일','🌍 국적','🏠 방문','💡 출처','💆 서비스','👐 치료사','💳 결제','💰 가격'],
+  msg:{
+    welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong>에 오신 것을 환영합니다!<br><br>시각 장애 치료사가 제공하는 정통 <span class="gold">일본 지압</span> 테라피. 🏆 2012년부터<br><br><strong>성함</strong>을 입력해 주세요 👇'; },
+    hello:function(n){ return '안녕하세요 <span class="hi">'+n+'</span>님! 😊<br><br><strong>신규</strong> 고객이신가요, 아니면 <strong>이전에</strong> 방문하셨나요?'; },
+    repeatWelcome:function(n){ return '다시 만나서 반갑습니다 <span class="hi">'+n+'</span>님! 🙏💚<br><br>서비스와 치료사를 선택해 주세요:'; },
+    phoneSec:'<span class="sec-badge">개인 정보</span><br><strong>전화번호</strong>와 <strong>이메일</strong>을 입력해 주세요 📱',
+    visitorQ:'<strong>관광객</strong>, <strong>비즈니스 방문자</strong>, 또는 <strong>거주자</strong>이신가요? 🌍',
+    natQ:'<strong>국적</strong>이 어디이신가요? 🌏<br><small style="color:var(--ink3)">선택 사항</small>',
+    heardQ:'<span class="sec-badge">마지막 질문</span><br>저희를 <strong>어떻게 알게 되셨나요</strong>? 🤔',
+    serviceQ:'훌륭합니다! 🎉 원하시는 <strong>서비스</strong>를 선택해 주세요 👇',
+    therapistQ:function(s,p){ var svc=s?'<span class="hi">'+s+'</span> — <span class="gold">'+p+'</span> ✨<br><br>':''; var badge='<span style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ee;border:1px solid #a8f0c4;border-radius:8px;padding:6px 12px;font-size:11.5px;color:#115c38;margin-top:8px;font-weight:600">🙋 먼저 안내 데스크에 문의하세요</span>'; return svc+'<strong>안내 데스크 직원</strong>에게 현재 가능한 치료사를 확인하신 후 아래에서 선택해 주세요 👇<br>'+badge; },
+    declIntro:function(t){ return '<span class="hi">'+t+'</span>님이 담당 치료사입니다. 🙏<br><br>아래 <strong>선언문</strong>을 읽고 <span class="gold">동의</span>해 주세요 👇'; },
+    declTitle:'📋 다음 사항을 이해하고 동의합니다:',
+    declItems:['음주나 수면제를 복용하지 않았습니다.','만성 질환이나 임신 중인 경우 의사의 허가를 받았습니다.','불편함이 생기면 즉시 직원에게 알리겠습니다.','센터를 떠난 후 발생하는 문제에 대해 Thusare는 책임지지 않습니다.','속옷 차림이나 나체로 치료받는 것은 금지됩니다.','보안상의 이유로 CCTV가 작동 중입니다.'],
+    declNo:'죄송합니다. 선언문에 동의하지 않으면 치료를 받을 수 없습니다. 🙏',
+    payQ:'거의 다 됐습니다! ✨<br><br><strong>결제 방법</strong>을 선택해 주세요 💳',
+    payQr:'<strong>결제 방법</strong>을 선택해 주세요 💳',
+    sumTitle:function(n){ return '🎉 <strong>'+n+'</strong>님 — 등록 완료!<br>예약 요약:'; },
+    final:function(n,t,r){ return '🙏 <strong>감사합니다 '+n+'님!</strong><br><br>등록이 완료되었습니다. 💚<br><br><span class="hi">'+t+'</span>님이 곧 뵙겠습니다!<br><br>'+(r?'다시 만나서 반갑습니다! 🔄':'Thusare Talking Hands에 오신 것을 환영합니다! 🌿')+'<br><br>📞 <strong>+94717776960</strong>'; },
+    fallback:'위의 버튼을 사용해 주세요. 🙂'
+  }
+};
+
 var lang = 'en';
 
 var chat = document.getElementById('chat');
@@ -341,10 +650,36 @@ function setProg(s,tot){ document.getElementById('progFill').style.width=(s/tot*
 function setLbl(n,t){ document.getElementById('stepNum').textContent=n; document.getElementById('stepTitle').textContent=t; }
 function clearW(id){ var e=document.getElementById(id); if(e)e.remove(); }
 
+function toggleLangMenu(e){
+  e.stopPropagation();
+  var dd=document.getElementById('langDropdown');
+  var gb=document.getElementById('btnGlobe');
+  var isOpen=dd.classList.contains('open');
+  dd.classList.toggle('open');
+  gb.classList.toggle('open',!isOpen);
+}
+
+document.addEventListener('click',function(){
+  document.getElementById('langDropdown').classList.remove('open');
+  document.getElementById('btnGlobe').classList.remove('open');
+});
+
 function setLang(l){
   lang=l;
+  // Close dropdown
+  document.getElementById('langDropdown').classList.remove('open');
+  document.getElementById('btnGlobe').classList.remove('open');
+  // English button active state
   document.getElementById('btnEN').className='lang-btn'+(l==='en'?' active':'');
-  document.getElementById('btnJA').className='lang-btn'+(l==='ja'?' active':'');
+  // Globe active if non-english selected
+  var gb=document.getElementById('btnGlobe');
+  gb.className='lang-globe'+(l!=='en'?' lang-active':'');
+  // Update all dropdown opts
+  var opts=['ja','si','ta','hi','zh','fr','de','ko'];
+  for(var i=0;i<opts.length;i++){
+    var el=document.getElementById('opt_'+opts[i]);
+    if(el) el.className='lang-opt'+(l===opts[i]?' active':'');
+  }
   document.getElementById('liveLabel').textContent=L().live;
   document.getElementById('uInp').placeholder=L().inputPh;
   chat.innerHTML='';
@@ -401,41 +736,125 @@ function mkThxGrid(onclickFn){
   return '<div class="thx-grid">'+tc+'</div>';
 }
 
-// ── STEP 1: WELCOME ──
+// ══════════════════════════════════════
+//  LOCAL STORAGE CUSTOMER DB
+// ══════════════════════════════════════
+var DB_KEY = 'thusare_customers';
+
+function dbSave(phone, record){
+  try {
+    var db = JSON.parse(localStorage.getItem(DB_KEY)||'{}');
+    var clean = phone.replace(/[\s\-()]/g,'');
+    db[clean] = record;
+    localStorage.setItem(DB_KEY, JSON.stringify(db));
+  } catch(e){}
+}
+
+function dbLookup(phone){
+  try {
+    var db = JSON.parse(localStorage.getItem(DB_KEY)||'{}');
+    var clean = phone.replace(/[\s\-()]/g,'');
+    if(db[clean]) return db[clean];
+    var suffix = clean.slice(-9);
+    for(var k in db){ if(k.slice(-9)===suffix) return db[k]; }
+  } catch(e){}
+  return null;
+}
+
+// ── STEP 1: WELCOME — Name + Phone together ──
 async function stepWelcome(){
   setLbl('1',L().steps[0]); setProg(1,10);
   await botMsg(M().welcome(),400);
+  var hint = lang==='ja'
+    ? '📌 電話番号でリピーターを自動検出します'
+    : '📌 Phone number ගැහුවම Repeat customer auto-detect වෙනවා';
   var w=document.createElement('div'); w.className='row'; w.id='wgt';
   w.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div class="txt-inp-wrap">'
     +'<input class="txt-inp" id="fi0" type="text" placeholder="'+L().namePh+'" maxlength="60"/>'
+    +'<input class="txt-inp" id="fi1" type="tel" placeholder="'+L().phonePh+'" maxlength="20" style="margin-top:8px"/>'
+    +'<div class="ph-hint">'+hint+'</div>'
     +'<div class="inp-row" style="margin-top:8px">'
-    +'<button class="inp-btn" onclick="submitName()">'+L().btnCont+'</button></div></div>';
+    +'<button class="inp-btn" onclick="submitNamePhone()">'+L().btnCont+'</button></div></div>';
   setTimeout(function(){chat.appendChild(w);scrollBot();document.getElementById('fi0').focus();},500);
 }
 
-function submitName(){
-  var v=document.getElementById('fi0').value.trim();
-  if(!v){document.getElementById('fi0').style.borderColor='var(--r)';return;}
-  d.name=v; clearW('wgt'); userMsg('📝 '+v); stepType();
+function submitNamePhone(){
+  var name=document.getElementById('fi0').value.trim();
+  var phone=document.getElementById('fi1').value.trim();
+  if(!name){document.getElementById('fi0').style.borderColor='var(--r)';return;}
+  if(!phone){document.getElementById('fi1').style.borderColor='var(--r)';return;}
+  d.name=name; d.phone=phone;
+  clearW('wgt');
+  userMsg('📝 '+name+'<br>📱 '+phone);
+  var found=dbLookup(phone);
+  if(found){ stepRepeatLookup(found); } else { stepType(); }
 }
 
-// ── STEP 2: TYPE ──
+// ── STEP 2: TYPE (New only — repeat auto-detected) ──
 async function stepType(){
   setLbl('2',L().steps[1]); setProg(2,10);
   await botMsg(M().hello(d.name));
   var r=document.createElement('div'); r.className='row'; r.id='wgt';
   r.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div><div class="chips">'
-    +'<button class="chip" onclick="pickType(\'New\',\''+L().lNew+'\')">'+L().lNew+'</button>'
-    +'<button class="chip" onclick="pickType(\'Repeat\',\''+L().lRepeat+'\')">'+L().lRepeat+'</button>'
+    +'<button class="chip" onclick="pickTypeBtn(false)">'+L().lNew+'</button>'
+    +'<button class="chip" onclick="pickTypeBtn(true)">'+L().lRepeat+'</button>'
     +'</div></div>';
   setTimeout(function(){chat.appendChild(r);scrollBot();},300);
 }
 
-function pickType(val,lbl){
+function pickTypeBtn(isRepeat){
+  var val=isRepeat?'Repeat':'New';
+  var lbl=isRepeat?L().lRepeat:L().lNew;
   d.type=val; clearW('wgt'); userMsg(lbl);
-  if(val==='Repeat') stepRepeat(); else stepPhone();
+  if(isRepeat) stepRepeat(); else stepEmailOnly();
+}
+
+// ── REPEAT AUTO-DETECT via localStorage ──
+async function stepRepeatLookup(found){
+  d.type='Repeat';
+  d.email=found.email||'—';
+  d.visitor=found.visitor||'';
+  d.nationality=found.nationality||'—';
+  d.heardFrom=found.heardFrom||'';
+  setLbl('2','Returning Customer ✨'); setProg(4,10);
+  var msg = lang==='ja'
+    ? 'おかえりなさい、<span class="hi">'+d.name+'</span>さん！ 🙏<br><br>前回の登録情報が見つかりました 👇'
+    : 'ආයෙමත් ඔබව දකිමු <span class="hi">'+d.name+'</span>! 🙏<br><br>ඔබගේ කලිනුත් data හමුවිය 👇';
+  await botMsg(msg);
+  var card='<div class="lookup-card"><div class="lookup-found">'
+    +'<div class="lookup-row"><span class="lookup-lbl">📱 Phone</span><span class="lookup-val">'+d.phone+'</span></div>';
+  if(found.email&&found.email!=='—')
+    card+='<div class="lookup-row"><span class="lookup-lbl">📧 Email</span><span class="lookup-val">'+found.email+'</span></div>';
+  if(found.visitor)
+    card+='<div class="lookup-row"><span class="lookup-lbl">🏠 Visitor</span><span class="lookup-val">'+found.visitor+'</span></div>';
+  if(found.nationality&&found.nationality!=='—')
+    card+='<div class="lookup-row"><span class="lookup-lbl">🌍 Nationality</span><span class="lookup-val">'+found.nationality+'</span></div>';
+  if(found.heardFrom)
+    card+='<div class="lookup-row"><span class="lookup-lbl">💡 Source</span><span class="lookup-val">'+found.heardFrom+'</span></div>';
+  var yesLbl=lang==='ja'?'✅ この情報で続ける':'✅ හරි, ඉදිරියට';
+  var editLbl=lang==='ja'?'✏️ 修正する':'✏️ Edit';
+  card+='</div><div class="lookup-actions">'
+    +'<button class="lookup-yes" onclick="confirmLookup()">'+yesLbl+'</button>'
+    +'<button class="lookup-edit" onclick="lookupEdit()">'+editLbl+'</button>'
+    +'</div></div>';
+  var r=document.createElement('div'); r.className='row'; r.id='wgt';
+  r.innerHTML='<div class="av b" style="opacity:0"></div>'
+    +'<div><div class="bub b" style="max-width:92%">'+card+'</div></div>';
+  setTimeout(function(){chat.appendChild(r);scrollBot();},300);
+}
+
+function confirmLookup(){
+  clearW('wgt');
+  userMsg('✅ '+(lang==='ja'?'確認しました':'Confirm!'));
+  stepRepeat();
+}
+
+function lookupEdit(){
+  clearW('wgt'); d.type='New';
+  userMsg('✏️ Edit');
+  stepEmailOnly();
 }
 
 // ── REPEAT FLOW ──
@@ -462,21 +881,21 @@ async function repeatPickThxStep(){
 }
 
 function repeatPickThx(name){
-  d.therapist=name; clearW('wgt'); userMsg('👐 '+name); stepPayment(true);
+  d.therapist=name; clearW('wgt'); userMsg('👐 '+name); stepDecl(true);
 }
 
-// ── STEP 3: PHONE ──
-async function stepPhone(){
+// ── STEP 3: EMAIL (phone already at step 1) ──
+async function stepEmailOnly(){
   setLbl('3',L().steps[2]); setProg(3,10);
   await botMsg(M().phoneSec);
   var w=document.createElement('div'); w.className='row'; w.id='wgt';
   w.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div class="txt-inp-wrap">'
-    +'<input class="txt-inp" id="fi0" type="tel" placeholder="'+L().phonePh+'" maxlength="20"/>'
+    +'<input class="txt-inp" id="fi0" type="tel" placeholder="'+L().phonePh+'" value="'+d.phone+'" maxlength="20"/>'
     +'<input class="txt-inp" id="fi1" type="email" placeholder="'+L().emailPh+'" maxlength="80" style="margin-top:8px"/>'
     +'<div class="inp-row" style="margin-top:8px">'
     +'<button class="inp-btn" onclick="submitPhone()">'+L().btnCont+'</button></div></div>';
-  setTimeout(function(){chat.appendChild(w);scrollBot();document.getElementById('fi0').focus();},400);
+  setTimeout(function(){chat.appendChild(w);scrollBot();document.getElementById('fi1').focus();},400);
 }
 
 function submitPhone(){
@@ -487,7 +906,6 @@ function submitPhone(){
   userMsg('📱 '+ph+(em?'<br>📧 '+em:''));
   stepVisitor();
 }
-
 // ── STEP 4: VISITOR ──
 async function stepVisitor(){
   setLbl('4',L().steps[3]); setProg(4,10);
@@ -566,7 +984,10 @@ async function stepTherapist(){
 function pickTherapist(name){ d.therapist=name; clearW('wgt'); userMsg('👐 '+name); stepDecl(); }
 
 // ── STEP 8: DECLARATION ──
-async function stepDecl(){
+var _declIsRepeat = false;
+async function stepDecl(isRepeat){
+  _declIsRepeat = isRepeat || false;
+  // Progress: repeat customers are at step ~8, new at step 8
   setLbl('8',L().steps[8]); setProg(8,10);
   await botMsg(M().declIntro(d.therapist));
   var items='';
@@ -582,7 +1003,7 @@ async function stepDecl(){
     +'</div></div></div>';
   setTimeout(function(){chat.appendChild(r);scrollBot();},300);
 }
-function agreeDecl(){ clearW('wgt'); userMsg(L().btnYes); stepPayment(false); }
+function agreeDecl(){ clearW('wgt'); userMsg(L().btnYes); stepPayment(_declIsRepeat); }
 function disagreeDecl(){ botMsg(M().declNo); }
 
 // ── STEP 9: PAYMENT ──
@@ -628,6 +1049,80 @@ async function stepSummary(){
   setTimeout(function(){chat.appendChild(r);scrollBot();},300);
 }
 
+// ── SERVICE NAME MAP to match Google Form dropdown exact values ──
+var SVC_MAP = {
+  'fb60':  'Full Body Therapy 60 minutes',
+  'fb90':  'Full Body Therapy 90 minutes',
+  'fb120': 'Full Body Therapy 120 minutes',
+  'fl30':  'Foot and Lower Leg 30 minutes',
+  'fl60':  'Foot and Lower Leg 60 minutes',
+  'hn30':  'Head Neck and Shoulders 30 minutes',
+  'hn60':  'Head Neck and Shoulders 60 minutes',
+  'hn90':  'Head Neck and Shoulders 90 minutes',
+  'duo30': '2-in-1 Shiatsu 30 minutes',
+  'duo60': '2-in-1 Shiatsu 60 minutes'
+};
+
+// ── VISITOR MAP to match Google Form values ──
+var VISITOR_MAP = {
+  'Tourist':          'Tourist',
+  'Business Visitor': 'Business visitor',
+  '観光客':            'Tourist',
+  'ビジネス訪問者':      'Business visitor',
+  'Resident':         'Resident',
+  '在住者':            'Resident'
+};
+
+// ── HEARD MAP ──
+var HEARD_MAP = {
+  'Regular':'Regular','常連':'Regular',
+  'Google':'Google',
+  'Tripadvisor':'Tripadvisor',
+  'Web':'Web','ウェブ':'Web',
+  'Facebook / SNS':'Facebook or SNS','Facebook / SNS':'Facebook or SNS',
+  'Friend':'Friend','友人':'Friend',
+  'Other':'Other','その他':'Other'
+};
+
+// ── PAYMENT MAP ──
+var PAY_MAP = {
+  'Cash':'Cash','現金':'Cash','මුදල්':'Cash','பணம்':'Cash','नकद':'Cash','现金':'Cash','Espèces':'Cash','Bargeld':'Cash','현금':'Cash',
+  'Card':'Card','カード':'Card',
+  'Online Transfer':'Online Transfer','オンライン振込':'Online Transfer',
+  'QR Pay':'QR Pay','QRコード払い':'QR Pay','QR':'QR Pay','QR码':'QR Pay',
+  'Loyalty Card':'Loyalty Card','ロイヤルティ':'Loyalty Card','会员积分':'Loyalty Card','Carte fidélité':'Loyalty Card','Treuekarte':'Loyalty Card','로열티 카드':'Loyalty Card',
+  'Gift Voucher':'Gift Voucher','ギフト券':'Gift Voucher','礼品券':'Gift Voucher','Bon cadeau':'Gift Voucher','Gutschein':'Gift Voucher','상품권':'Gift Voucher'
+};
+
+function buildFormURL(){
+  var base='https://docs.google.com/forms/d/e/1FAIpQLScKtigPoaln2lA-6U24CUL4ofaaYk2CUSG0hjYtyAL8RJ5_6A/viewform';
+  var isR=d.type==='Repeat';
+
+  function enc(v){ return encodeURIComponent(v||''); }
+
+  var svcVal = SVC_MAP[d.service.key] || d.service.label;
+  var visitorVal = VISITOR_MAP[d.visitor] || d.visitor || '';
+  var heardVal = HEARD_MAP[d.heardFrom] || d.heardFrom || '';
+  var payVal = PAY_MAP[d.payment] || d.payment;
+
+  var url = base
+    +'?entry.1000027='+enc(d.name)
+    +'&entry.1000057='+enc(d.type)
+    +'&entry.1738860595='+enc(svcVal)
+    +'&entry.1025460438='+enc(d.therapist)
+    +'&entry.1000020=YES'
+    +'&entry.513284361='+enc(payVal);
+
+  if(!isR){
+    url += '&entry.967112212='+enc(d.phone)
+         +'&entry.604448062='+enc(d.email==='—'?'':d.email)
+         +'&entry.1830763802='+enc(visitorVal)
+         +'&entry.2055232012='+enc(d.nationality==='—'?'':d.nationality)
+         +'&entry.238597302='+enc(heardVal);
+  }
+  return url;
+}
+
 function buildWAMsg(){
   var isR=d.type==='Repeat';
   var t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
@@ -638,9 +1133,9 @@ function buildWAMsg(){
   msg+='*Type:* '+d.type+' Customer\n';
   if(!isR){
     msg+='*Phone:* '+d.phone+'\n';
-    if(d.email&&d.email!=='--') msg+='*Email:* '+d.email+'\n';
+    if(d.email&&d.email!=='—') msg+='*Email:* '+d.email+'\n';
     msg+='*Visitor:* '+d.visitor+'\n';
-    if(d.nationality&&d.nationality!=='--') msg+='*Nationality:* '+d.nationality+'\n';
+    if(d.nationality&&d.nationality!=='—') msg+='*Nationality:* '+d.nationality+'\n';
     msg+='*Heard from:* '+d.heardFrom+'\n';
   }
   msg+='--------------------------------\n';
@@ -658,6 +1153,11 @@ function openWA(num){
   window.open('https://wa.me/'+num+'?text='+msg,'_blank');
 }
 
+function openForm(){
+  var url=buildFormURL();
+  window.open(url,'_blank');
+}
+
 async function finalConfirm(){
   var btn=document.getElementById('confirmBtn'); if(btn)btn.disabled=true;
   userMsg(L().btnConfirm);
@@ -665,9 +1165,19 @@ async function finalConfirm(){
 
   var waSVG='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.522 5.83L.057 23.27a.75.75 0 00.914.914l5.44-1.465A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.722 9.722 0 01-4.964-1.36l-.356-.211-3.688.994.994-3.688-.211-.356A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>';
 
+  var formSVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>';
+
   var wr=document.createElement('div'); wr.className='row';
   var waHtml='<div class="wa-section">'
-    +'<div class="wa-divider"><span>Send to Staff via WhatsApp</span></div>'
+    // Google Form button
+    +'<button class="form-submit-btn" onclick="openForm()">'
+    +formSVG
+    +'<span>Submit to Google Form</span>'
+    +'<span class="form-badge">Auto Filled ✓</span>'
+    +'</button>'
+    // Divider
+    +'<div class="wa-divider"><span>Also notify staff via WhatsApp</span></div>'
+    // WA buttons
     +'<div class="wa-btns">'
     +'<button class="wa-btn wa1" onclick="openWA(94717776960)">'+waSVG+' +94717776960</button>'
     +'<button class="wa-btn wa2" onclick="openWA(94779896183)">'+waSVG+' +94779896183</button>'
@@ -676,6 +1186,17 @@ async function finalConfirm(){
   wr.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div><div class="bub b" style="max-width:92%">'+waHtml+'</div></div>';
   setTimeout(function(){chat.appendChild(wr);scrollBot();},400);
+
+  // ── Save to localStorage DB ──
+  try {
+    dbSave(d.phone, {
+      name:        d.name,
+      email:       d.email,
+      visitor:     d.visitor,
+      nationality: d.nationality,
+      heardFrom:   d.heardFrom
+    });
+  } catch(e){ console.log('DB save error',e); }
 }
 
 function onSend(){
