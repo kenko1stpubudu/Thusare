@@ -330,6 +330,8 @@ var T = {
     steps:['Welcome','Customer Type','Phone & Email','Visitor Type','Nationality','How You Found Us','Service','Therapist','Declaration','Payment','Complete!'],
     namePh:'Your full name', phonePh:'📱 Phone number (+94…)', emailPh:'📧 Email address', natPh:'e.g. Sri Lankan, Japanese, British…',
     sumLbls:['👤 Name','🌟 Type','📱 Phone','📧 Email','🌍 Nationality','🏠 Visitor','💡 Source','💆 Service','👐 Therapist','💳 Payment','💰 Price'],
+    btnLookupYes:'✅ Confirm & Continue', btnLookupEdit:'✏️ Edit Details',
+    lookupFound:function(n){ return 'Welcome back, <span class="hi">'+n+'</span>! 🙏<br><br>We found your previous registration details 👇'; },
     msg:{
       welcome: function(n){ return '<span class="emoji-big">🙏</span>Welcome to <strong>Thusare Talking Hands</strong>!<br><br>We offer authentic <span class="gold">Japanese Shiatsu</span> therapy by <span class="hi">visually-impaired</span> therapists. 🏆 Social Enterprise Since 2012<br><br>Please enter your <strong>full name</strong> to begin 👇'; },
       hello: function(n){ return 'Good day, <span class="hi">'+n+'</span>! 😊<br><br>Are you a <strong>new</strong> customer or have you visited us <strong>before</strong>?'; },
@@ -363,6 +365,8 @@ var T = {
     steps:['ようこそ','お客様タイプ','電話・メール','訪問者タイプ','国籍','きっかけ','サービス','セラピスト','同意書','お支払い','登録完了！'],
     namePh:'お名前（フルネーム）', phonePh:'📱 電話番号', emailPh:'📧 メールアドレス', natPh:'例：日本、スリランカ、イギリス…',
     sumLbls:['👤 お名前','🌟 タイプ','📱 電話番号','📧 メール','🌍 国籍','🏠 訪問者種別','💡 きっかけ','💆 サービス','👐 セラピスト','💳 お支払い','💰 料金'],
+    btnLookupYes:'✅ この情報で続ける', btnLookupEdit:'✏️ 修正する',
+    lookupFound:function(n){ return 'おかえりなさい、<span class="hi">'+n+'</span>さん！ 🙏<br><br>前回の登録情報が見つかりました 👇'; },
     msg:{
       welcome: function(n){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> へようこそ！<br><br>視覚障害のあるセラピストによる本格的な<span class="gold">日本式指圧</span>療法を提供しています。🏆 2012年設立<br><br>ご登録のため、<strong>お名前</strong>をご入力ください 👇'; },
       hello: function(n){ return 'こんにちは、<span class="hi">'+n+'</span>さん！ 😊<br><br><strong>初めて</strong>のご来店ですか？それとも<strong>以前</strong>ご利用いただきましたか？'; },
@@ -415,6 +419,8 @@ T.si = {
   steps:['ආයුබෝවන්','ගනුදෙනුකරු','දුරකතන & Email','පැමිණීමේ හේතුව','ජාතිකත්වය','දැනගත් ආකාරය','සේවාව','චිකිත්සකයා','ප්‍රකාශය','ගෙවීම','සම්පූර්ණයි!'],
   namePh:'ඔබගේ සම්පූර්ණ නම', phonePh:'📱 දුරකතන අංකය', emailPh:'📧 Email ලිපිනය', natPh:'උදා: ශ්‍රී ලාංකික, ජපන්…',
   sumLbls:['👤 නම','🌟 වර්ගය','📱 දු.අ.','📧 Email','🌍 ජාතිකත්වය','🏠 පැමිණීම','💡 මූලාශ්‍රය','💆 සේවාව','👐 චිකිත්සකයා','💳 ගෙවීම','💰 මිල'],
+  btnLookupYes:'✅ Confirm & Continue', btnLookupEdit:'✏️ Edit',
+    lookupFound:function(n){ return 'Welcome back, <span class="hi">'+n+'</span>! 🙏<br><br>Your previous details were found 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> වෙත ආයුබෝවන්!<br><br>දෘශ්‍යාබාධිත චිකිත්සකයින් ලබා දෙන <span class="gold">Japanese Shiatsu</span> ශරීර ප්‍රතිකාර. 🏆 2012 සිට<br><br>ඔබගේ <strong>නම</strong> ලියන්න 👇'; },
     hello:function(n){ return 'සුභ දවසක් <span class="hi">'+n+'</span>! 😊<br><br>ඔබ <strong>නව</strong> ගනුදෙනුකරුවෙකිද නැතිනම් <strong>කලිනුත්</strong> පැමිණ ඇද්ද?'; },
@@ -448,6 +454,8 @@ T.ta = {
   steps:['வரவேற்கிறோம்','வாடிக்கையாளர் வகை','தொலைபேசி & மின்னஞ்சல்','பார்வையாளர் வகை','தேசியம்','எப்படி அறிந்தீர்கள்','சேவை','சிகிச்சையாளர்','அறிவிப்பு','கட்டணம்','முடிந்தது!'],
   namePh:'உங்கள் முழு பெயர்', phonePh:'📱 தொலைபேசி எண்', emailPh:'📧 மின்னஞ்சல்', natPh:'எ.கா: இலங்கையர், ஜப்பானியர்…',
   sumLbls:['👤 பெயர்','🌟 வகை','📱 தொலைபேசி','📧 மின்னஞ்சல்','🌍 தேசியம்','🏠 பார்வை','💡 மூலம்','💆 சேவை','👐 சிகிச்சையாளர்','💳 கட்டணம்','💰 விலை'],
+  btnLookupYes:'✅ உறுதிப்படுத்தி தொடரவும்', btnLookupEdit:'✏️ திருத்தவும்',
+    lookupFound:function(n){ return 'மீண்டும் வருக <span class="hi">'+n+'</span>! 🙏<br><br>உங்கள் முந்தைய பதிவு தகவல் கிடைத்தது 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> இல் வரவேற்கிறோம்!<br><br>பார்வை குறைபாடுள்ள சிகிச்சையாளர்களால் வழங்கப்படும் <span class="gold">Japanese Shiatsu</span> சிகிச்சை. 🏆 2012 முதல்<br><br>உங்கள் <strong>பெயரை</strong> உள்ளிடவும் 👇'; },
     hello:function(n){ return 'வணக்கம் <span class="hi">'+n+'</span>! 😊<br><br>நீங்கள் <strong>புதிய</strong> வாடிக்கையாளரா அல்லது <strong>முன்பு</strong> வந்திருக்கிறீர்களா?'; },
@@ -481,6 +489,8 @@ T.hi = {
   steps:['स्वागत','ग्राहक प्रकार','फोन & ईमेल','आगंतुक प्रकार','राष्ट्रीयता','कैसे जाना','सेवा','चिकित्सक','घोषणा','भुगतान','पूर्ण!'],
   namePh:'आपका पूरा नाम', phonePh:'📱 फोन नंबर', emailPh:'📧 ईमेल पता', natPh:'जैसे: भारतीय, श्रीलंकाई…',
   sumLbls:['👤 नाम','🌟 प्रकार','📱 फोन','📧 ईमेल','🌍 राष्ट्रीयता','🏠 आगंतुक','💡 स्रोत','💆 सेवा','👐 चिकित्सक','💳 भुगतान','💰 मूल्य'],
+  btnLookupYes:'✅ पुष्टि करें और जारी रखें', btnLookupEdit:'✏️ संपादित करें',
+    lookupFound:function(n){ return 'फिर से स्वागत है <span class="hi">'+n+'</span>! 🙏<br><br>आपकी पिछली पंजीकरण जानकारी मिली 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong> में आपका स्वागत है!<br><br>दृष्टिबाधित चिकित्सकों द्वारा प्रामाणिक <span class="gold">Japanese Shiatsu</span> थेरेपी. 🏆 2012 से<br><br>कृपया अपना <strong>नाम</strong> दर्ज करें 👇'; },
     hello:function(n){ return 'नमस्ते <span class="hi">'+n+'</span>! 😊<br><br>क्या आप <strong>नए</strong> ग्राहक हैं या <strong>पहले</strong> आ चुके हैं?'; },
@@ -514,6 +524,8 @@ T.zh = {
   steps:['欢迎','客户类型','电话和邮箱','访客类型','国籍','如何了解','服务','治疗师','声明','付款','完成！'],
   namePh:'您的全名', phonePh:'📱 电话号码', emailPh:'📧 电子邮件', natPh:'例如：中国人、日本人…',
   sumLbls:['👤 姓名','🌟 类型','📱 电话','📧 邮箱','🌍 国籍','🏠 访客','💡 来源','💆 服务','👐 治疗师','💳 付款','💰 价格'],
+  btnLookupYes:'✅ 确认并继续', btnLookupEdit:'✏️ 修改',
+    lookupFound:function(n){ return '欢迎回来，<span class="hi">'+n+'</span>！ 🙏<br><br>找到您之前的注册信息 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span>欢迎来到<strong>Thusare Talking Hands</strong>！<br><br>由视障治疗师提供正宗的<span class="gold">日本指压</span>疗法。🏆 自2012年起<br><br>请输入您的<strong>姓名</strong> 👇'; },
     hello:function(n){ return '您好，<span class="hi">'+n+'</span>！ 😊<br><br>您是<strong>新</strong>客户还是曾经<strong>光临</strong>过？'; },
@@ -547,6 +559,8 @@ T.fr = {
   steps:['Bienvenue','Type de client','Téléphone & Email','Type de visiteur','Nationalité','Comment connu','Service','Thérapeute','Déclaration','Paiement','Terminé!'],
   namePh:'Votre nom complet', phonePh:'📱 Numéro de téléphone', emailPh:'📧 Adresse e-mail', natPh:'ex: Français, Sri Lankais…',
   sumLbls:['👤 Nom','🌟 Type','📱 Tél','📧 Email','🌍 Nationalité','🏠 Visiteur','💡 Source','💆 Service','👐 Thérapeute','💳 Paiement','💰 Prix'],
+  btnLookupYes:'✅ Confirmer et continuer', btnLookupEdit:'✏️ Modifier',
+    lookupFound:function(n){ return 'Bienvenue à nouveau, <span class="hi">'+n+'</span>! 🙏<br><br>Vos informations précédentes ont été trouvées 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span>Bienvenue chez <strong>Thusare Talking Hands</strong>!<br><br>Thérapie <span class="gold">Shiatsu japonais</span> authentique par des thérapeutes malvoyants. 🏆 Depuis 2012<br><br>Veuillez entrer votre <strong>nom</strong> 👇'; },
     hello:function(n){ return 'Bonjour <span class="hi">'+n+'</span>! 😊<br><br>Êtes-vous un <strong>nouveau</strong> client ou avez-vous déjà <strong>visité</strong>?'; },
@@ -580,6 +594,8 @@ T.de = {
   steps:['Willkommen','Kundentyp','Tel. & E-Mail','Besuchertyp','Nationalität','Wie erfahren','Service','Therapeut','Erklärung','Zahlung','Fertig!'],
   namePh:'Ihr vollständiger Name', phonePh:'📱 Telefonnummer', emailPh:'📧 E-Mail-Adresse', natPh:'z.B. Deutsch, Sri-lankisch…',
   sumLbls:['👤 Name','🌟 Typ','📱 Tel','📧 E-Mail','🌍 Nationalität','🏠 Besucher','💡 Quelle','💆 Service','👐 Therapeut','💳 Zahlung','💰 Preis'],
+  btnLookupYes:'✅ Bestätigen und weiter', btnLookupEdit:'✏️ Bearbeiten',
+    lookupFound:function(n){ return 'Willkommen zurück, <span class="hi">'+n+'</span>! 🙏<br><br>Ihre vorherigen Registrierungsdaten wurden gefunden 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span>Willkommen bei <strong>Thusare Talking Hands</strong>!<br><br>Authentische <span class="gold">japanische Shiatsu</span>-Therapie von sehbehinderten Therapeuten. 🏆 Seit 2012<br><br>Bitte geben Sie Ihren <strong>Namen</strong> ein 👇'; },
     hello:function(n){ return 'Guten Tag <span class="hi">'+n+'</span>! 😊<br><br>Sind Sie ein <strong>neuer</strong> Kunde oder haben Sie uns schon <strong>besucht</strong>?'; },
@@ -613,6 +629,8 @@ T.ko = {
   steps:['환영합니다','고객 유형','전화 & 이메일','방문자 유형','국적','알게 된 경로','서비스','치료사','선언','결제','완료!'],
   namePh:'성함', phonePh:'📱 전화번호', emailPh:'📧 이메일 주소', natPh:'예: 한국인, 일본인…',
   sumLbls:['👤 이름','🌟 유형','📱 전화','📧 이메일','🌍 국적','🏠 방문','💡 출처','💆 서비스','👐 치료사','💳 결제','💰 가격'],
+  btnLookupYes:'✅ 확인 후 계속', btnLookupEdit:'✏️ 수정',
+    lookupFound:function(n){ return '다시 만나서 반갑습니다, <span class="hi">'+n+'</span>님! 🙏<br><br>이전 등록 정보를 찾았습니다 👇'; },
   msg:{
     welcome:function(){ return '<span class="emoji-big">🙏</span><strong>Thusare Talking Hands</strong>에 오신 것을 환영합니다!<br><br>시각 장애 치료사가 제공하는 정통 <span class="gold">일본 지압</span> 테라피. 🏆 2012년부터<br><br><strong>성함</strong>을 입력해 주세요 👇'; },
     hello:function(n){ return '안녕하세요 <span class="hi">'+n+'</span>님! 😊<br><br><strong>신규</strong> 고객이신가요, 아니면 <strong>이전에</strong> 방문하셨나요?'; },
@@ -765,15 +783,11 @@ function dbLookup(phone){
 async function stepWelcome(){
   setLbl('1',L().steps[0]); setProg(1,10);
   await botMsg(M().welcome(),400);
-  var hint = lang==='ja'
-    ? '📌 電話番号でリピーターを自動検出します'
-    : '📌 Phone number ගැහුවම Repeat customer auto-detect වෙනවා';
   var w=document.createElement('div'); w.className='row'; w.id='wgt';
   w.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div class="txt-inp-wrap">'
     +'<input class="txt-inp" id="fi0" type="text" placeholder="'+L().namePh+'" maxlength="60"/>'
     +'<input class="txt-inp" id="fi1" type="tel" placeholder="'+L().phonePh+'" maxlength="20" style="margin-top:8px"/>'
-    +'<div class="ph-hint">'+hint+'</div>'
     +'<div class="inp-row" style="margin-top:8px">'
     +'<button class="inp-btn" onclick="submitNamePhone()">'+L().btnCont+'</button></div></div>';
   setTimeout(function(){chat.appendChild(w);scrollBot();document.getElementById('fi0').focus();},500);
@@ -819,9 +833,7 @@ async function stepRepeatLookup(found){
   d.nationality=found.nationality||'—';
   d.heardFrom=found.heardFrom||'';
   setLbl('2','Returning Customer ✨'); setProg(4,10);
-  var msg = lang==='ja'
-    ? 'おかえりなさい、<span class="hi">'+d.name+'</span>さん！ 🙏<br><br>前回の登録情報が見つかりました 👇'
-    : 'ආයෙමත් ඔබව දකිමු <span class="hi">'+d.name+'</span>! 🙏<br><br>ඔබගේ කලිනුත් data හමුවිය 👇';
+  var msg = M().lookupFound(d.name);
   await botMsg(msg);
   var card='<div class="lookup-card"><div class="lookup-found">'
     +'<div class="lookup-row"><span class="lookup-lbl">📱 Phone</span><span class="lookup-val">'+d.phone+'</span></div>';
@@ -833,8 +845,8 @@ async function stepRepeatLookup(found){
     card+='<div class="lookup-row"><span class="lookup-lbl">🌍 Nationality</span><span class="lookup-val">'+found.nationality+'</span></div>';
   if(found.heardFrom)
     card+='<div class="lookup-row"><span class="lookup-lbl">💡 Source</span><span class="lookup-val">'+found.heardFrom+'</span></div>';
-  var yesLbl=lang==='ja'?'✅ この情報で続ける':'✅ හරි, ඉදිරියට';
-  var editLbl=lang==='ja'?'✏️ 修正する':'✏️ Edit';
+  var yesLbl=L().btnLookupYes;
+  var editLbl=L().btnLookupEdit;
   card+='</div><div class="lookup-actions">'
     +'<button class="lookup-yes" onclick="confirmLookup()">'+yesLbl+'</button>'
     +'<button class="lookup-edit" onclick="lookupEdit()">'+editLbl+'</button>'
@@ -847,13 +859,13 @@ async function stepRepeatLookup(found){
 
 function confirmLookup(){
   clearW('wgt');
-  userMsg('✅ '+(lang==='ja'?'確認しました':'Confirm!'));
+  userMsg(L().btnLookupYes);
   stepRepeat();
 }
 
 function lookupEdit(){
   clearW('wgt'); d.type='New';
-  userMsg('✏️ Edit');
+  userMsg(L().btnLookupEdit);
   stepEmailOnly();
 }
 
