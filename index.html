@@ -280,6 +280,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .thx-avatar.thx-has-photo{background:transparent;border:2.5px solid var(--g2);overflow:hidden;padding:0}
 .thx-avatar.thx-has-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .thx-btn:hover .thx-avatar.thx-has-photo{border-color:rgba(255,255,255,.5)}
+
+/* INPUT VALIDATION */
+.txt-inp.error{border-color:var(--r)!important;box-shadow:0 0 0 3px rgba(192,57,43,.12)!important}
+.inp-error{font-size:11px;color:var(--r);margin-top:4px;padding-left:2px;display:none}
+.inp-error.show{display:block}
 </style>
 </head>
 <body>
@@ -342,6 +347,10 @@ var T = {
     steps:['Welcome','Customer Type','Phone & Email','Visitor Type','Nationality','How You Found Us','Service','Therapist','Declaration','Payment','Complete!'],
     namePh:'Your full name', phonePh:'📱 Phone number (+94…)', emailPh:'📧 Email address', natPh:'e.g. Sri Lankan, Japanese, British…',
     sumLbls:['👤 Name','🌟 Type','📱 Phone','📧 Email','🌍 Nationality','🏠 Visitor','💡 Source','💆 Service','👐 Therapist','💳 Payment','💰 Price'],
+    errName:'Please enter your name',
+    errPhoneReq:'Please enter your phone number',
+    errPhoneInvalid:'Invalid phone number (e.g. +94771234567)',
+    errEmailInvalid:'Invalid email address (e.g. name@email.com)',
     svcNames:{'fb60':'Full Body Therapy','fb90':'Full Body Therapy','fb120':'Full Body Therapy','fl30':'Foot & Lower Leg','fl60':'Foot & Lower Leg','hn30':'Head, Neck & Shoulders','hn60':'Head, Neck & Shoulders','hn90':'Head, Neck & Shoulders','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Highly Recommended ⭐','new':'New Menu ✨','fullbody_sub':'Head, Neck, Shoulder, Back & Foot','duo_sub':'Full-Body by 2 Therapists',},
   btnLookupYes:'✅ Confirm & Continue', btnLookupEdit:'✏️ Edit Details',
     lookupFound:function(n){ return 'Welcome back, <span class="hi">'+n+'</span>! 🙏<br><br>We found your previous registration details 👇'; },
@@ -837,6 +846,34 @@ function dbLookup(phone){
   return null;
 }
 
+// ── VALIDATION HELPERS ──
+function isValidPhone(v){
+  // Allow: +94771234567, 0771234567, +1234567890 — digits, spaces, +, -, ()
+  // Min 7 digits, max 15 digits
+  var digits = v.replace(/[^0-9]/g,'');
+  return digits.length >= 7 && digits.length <= 15 && /^[+0-9][0-9\s\-().]{6,19}$/.test(v);
+}
+
+function isValidEmail(v){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function setInpError(id, errId, msg){
+  var el = document.getElementById(id);
+  var er = document.getElementById(errId);
+  if(el){ el.classList.add('error'); el.style.borderColor=''; }
+  if(er && msg){ er.textContent = msg; er.classList.add('show'); }
+}
+
+function clearInpError(idOrEl, errId){
+  var el = (typeof idOrEl==='string') ? document.getElementById(idOrEl) : idOrEl;
+  if(!el) return;
+  el.classList.remove('error'); el.style.borderColor='';
+  // Auto-find next sibling error div
+  var er = errId ? document.getElementById(errId) : el.nextElementSibling;
+  if(er && er.classList.contains('inp-error')){ er.classList.remove('show'); er.textContent=''; }
+}
+
 // ── STEP 1: WELCOME — Name + Phone together ──
 async function stepWelcome(){
   setLbl('1',L().steps[0]); setProg(1,10);
@@ -844,8 +881,10 @@ async function stepWelcome(){
   var w=document.createElement('div'); w.className='row'; w.id='wgt';
   w.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div class="txt-inp-wrap">'
-    +'<input class="txt-inp" id="fi0" type="text" placeholder="'+L().namePh+'" maxlength="60"/>'
-    +'<input class="txt-inp" id="fi1" type="tel" placeholder="'+L().phonePh+'" maxlength="20" style="margin-top:8px"/>'
+    +'<input class="txt-inp" id="fi0" type="text" placeholder="'+L().namePh+'" maxlength="60" oninput="clearInpError(this)"/>'
+    +'<div class="inp-error" id="err0"></div>'
+    +'<input class="txt-inp" id="fi1" type="tel" placeholder="'+L().phonePh+'" maxlength="20" style="margin-top:8px" oninput="clearInpError(this)"/>'
+    +'<div class="inp-error" id="err1"></div>'
     +'<div class="inp-row" style="margin-top:8px">'
     +'<button class="inp-btn" onclick="submitNamePhone()">'+L().btnCont+'</button></div></div>';
   setTimeout(function(){chat.appendChild(w);scrollBot();document.getElementById('fi0').focus();},500);
@@ -854,8 +893,12 @@ async function stepWelcome(){
 function submitNamePhone(){
   var name=document.getElementById('fi0').value.trim();
   var phone=document.getElementById('fi1').value.trim();
-  if(!name){document.getElementById('fi0').style.borderColor='var(--r)';return;}
-  if(!phone){document.getElementById('fi1').style.borderColor='var(--r)';return;}
+  var ok=true;
+  clearInpError('fi0','err0'); clearInpError('fi1','err1');
+  if(!name){ setInpError('fi0','err0', L().errName||'Please enter your name'); ok=false; }
+  if(!phone){ setInpError('fi1','err1', L().errPhoneReq||'Please enter your phone number'); ok=false; }
+  else if(!isValidPhone(phone)){ setInpError('fi1','err1', L().errPhoneInvalid||'Please enter a valid phone number'); ok=false; }
+  if(!ok) return;
   d.name=name; d.phone=phone;
   clearW('wgt');
   userMsg('📝 '+name+'<br>📱 '+phone);
@@ -961,8 +1004,10 @@ async function stepEmailOnly(){
   var w=document.createElement('div'); w.className='row'; w.id='wgt';
   w.innerHTML='<div class="av b" style="opacity:0"></div>'
     +'<div class="txt-inp-wrap">'
-    +'<input class="txt-inp" id="fi0" type="tel" placeholder="'+L().phonePh+'" value="'+d.phone+'" maxlength="20"/>'
-    +'<input class="txt-inp" id="fi1" type="email" placeholder="'+L().emailPh+'" maxlength="80" style="margin-top:8px"/>'
+    +'<input class="txt-inp" id="fi0" type="tel" placeholder="'+L().phonePh+'" value="'+d.phone+'" maxlength="20" oninput="clearInpError(this)"/>'
+    +'<div class="inp-error" id="err0"></div>'
+    +'<input class="txt-inp" id="fi1" type="email" placeholder="'+L().emailPh+'" maxlength="80" style="margin-top:8px" oninput="clearInpError(this)"/>'
+    +'<div class="inp-error" id="err1"></div>'
     +'<div class="inp-row" style="margin-top:8px">'
     +'<button class="inp-btn" onclick="submitPhone()">'+L().btnCont+'</button></div></div>';
   setTimeout(function(){chat.appendChild(w);scrollBot();document.getElementById('fi1').focus();},400);
@@ -971,7 +1016,12 @@ async function stepEmailOnly(){
 function submitPhone(){
   var ph=document.getElementById('fi0').value.trim();
   var em=document.getElementById('fi1').value.trim();
-  if(!ph){document.getElementById('fi0').style.borderColor='var(--r)';return;}
+  var ok=true;
+  clearInpError('fi0','err0'); clearInpError('fi1','err1');
+  if(!ph){ setInpError('fi0','err0', L().errPhoneReq||'Please enter your phone number'); ok=false; }
+  else if(!isValidPhone(ph)){ setInpError('fi0','err0', L().errPhoneInvalid||'Please enter a valid phone number'); ok=false; }
+  if(em && !isValidEmail(em)){ setInpError('fi1','err1', L().errEmailInvalid||'Please enter a valid email address'); ok=false; }
+  if(!ok) return;
   d.phone=ph; d.email=em||'—'; clearW('wgt');
   userMsg('📱 '+ph+(em?'<br>📧 '+em:''));
   stepVisitor();
