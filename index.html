@@ -351,7 +351,7 @@ var T = {
     errPhoneReq:'Please enter your phone number',
     errPhoneInvalid:'Invalid phone number (e.g. +94771234567)',
     errEmailInvalid:'Invalid email address (e.g. name@email.com)',
-    svcNames:{'fb60':'Full Body Therapy','fb90':'Full Body Therapy','fb120':'Full Body Therapy','fl30':'Foot & Lower Leg','fl60':'Foot & Lower Leg','hn30':'Head, Neck & Shoulders','hn60':'Head, Neck & Shoulders','hn90':'Head, Neck & Shoulders','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Highly Recommended ⭐','new':'New Menu ✨','fullbody_sub':'Head, Neck, Shoulder, Back & Foot','duo_sub':'Full-Body by 2 Therapists',},
+    svcNames:{'fb60':'Full Body Therapy','fb90':'Full Body Therapy','fb120':'Full Body Therapy','fl30':'Foot & Lower Leg','fl60':'Foot & Lower Leg','fl90':'Foot & Lower Leg','hn30':'Head, Neck & Shoulders','hn60':'Head, Neck & Shoulders','hn90':'Head, Neck & Shoulders','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Highly Recommended ⭐','new':'New Menu ✨','fullbody_sub':'Head, Neck, Shoulder, Back & Foot','duo_sub':'Full-Body by 2 Therapists',},
   btnLookupYes:'✅ Confirm & Continue', btnLookupEdit:'✏️ Edit Details',
     lookupFound:function(n){ return 'Welcome back, <span class="hi">'+n+'</span>! 🙏<br><br>We found your previous registration details 👇'; },
     msg:{
@@ -418,6 +418,7 @@ var SERVICES = [
   {title:'Full Body Therapy',   dur:'120 mins', price:'Rs. 10,000', key:'fb120'},
   {title:'Foot & Lower Leg',    dur:'30 mins',  price:'Rs. 4,000',  key:'fl30'},
   {title:'Foot & Lower Leg',    dur:'60 mins',  price:'Rs. 6,000',  key:'fl60'},
+  {title:'Foot & Lower Leg',    dur:'90 mins',  price:'Rs. 8,000',  key:'fl90'},
   {title:'Head, Neck & Shoulders', dur:'30 mins', price:'Rs. 4,000', key:'hn30'},
   {title:'Head, Neck & Shoulders', dur:'60 mins', price:'Rs. 6,000', key:'hn60'},
   {title:'Head, Neck & Shoulders', dur:'90 mins', price:'Rs. 8,000', key:'hn90'},
@@ -450,7 +451,7 @@ T.si = {
   steps:['ආයුබෝවන්','ගනුදෙනුකරු','දුරකතන & Email','පැමිණීමේ හේතුව','ජාතිකත්වය','දැනගත් ආකාරය','සේවාව','චිකිත්සකයා','ප්‍රකාශය','ගෙවීම','සම්පූර්ණයි!'],
   namePh:'ඔබගේ සම්පූර්ණ නම', phonePh:'📱 දුරකතන අංකය', emailPh:'📧 Email ලිපිනය', natPh:'උදා: ශ්‍රී ලාංකික, ජපන්…',
   sumLbls:['👤 නම','🌟 වර්ගය','📱 දු.අ.','📧 Email','🌍 ජාතිකත්වය','🏠 පැමිණීම','💡 මූලාශ්‍රය','💆 සේවාව','👐 චිකිත්සකයා','💳 ගෙවීම','💰 මිල'],
-  svcNames:{'fb60':'Full Body Therapy','fb90':'Full Body Therapy','fb120':'Full Body Therapy','fl30':'Foot & Lower Leg','fl60':'Foot & Lower Leg','hn30':'Head, Neck & Shoulders','hn60':'Head, Neck & Shoulders','hn90':'Head, Neck & Shoulders','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Highly Recommended ⭐','new':'New Menu ✨','fullbody_sub':'Head, Neck, Shoulder, Back & Foot','duo_sub':'Full-Body by 2 Therapists',},
+  svcNames:{'fb60':'Full Body Therapy','fb90':'Full Body Therapy','fb120':'Full Body Therapy','fl30':'Foot & Lower Leg','fl60':'Foot & Lower Leg','fl90':'Foot & Lower Leg','hn30':'Head, Neck & Shoulders','hn60':'Head, Neck & Shoulders','hn90':'Head, Neck & Shoulders','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Highly Recommended ⭐','new':'New Menu ✨','fullbody_sub':'Head, Neck, Shoulder, Back & Foot','duo_sub':'Full-Body by 2 Therapists',},
     btnLookupYes:'✅ Confirm & Continue', btnLookupEdit:'✏️ Edit',
     lookupFound:function(n){ return 'Welcome back, <span class="hi">'+n+'</span>! 🙏<br><br>Your previous details were found 👇'; },
   msg:{
@@ -486,7 +487,7 @@ T.ta = {
   steps:['வரவேற்கிறோம்','வாடிக்கையாளர் வகை','தொலைபேசி & மின்னஞ்சல்','பார்வையாளர் வகை','தேசியம்','எப்படி அறிந்தீர்கள்','சேவை','சிகிச்சையாளர்','அறிவிப்பு','கட்டணம்','முடிந்தது!'],
   namePh:'உங்கள் முழு பெயர்', phonePh:'📱 தொலைபேசி எண்', emailPh:'📧 மின்னஞ்சல்', natPh:'எ.கா: இலங்கையர், ஜப்பானியர்…',
   sumLbls:['👤 பெயர்','🌟 வகை','📱 தொலைபேசி','📧 மின்னஞ்சல்','🌍 தேசியம்','🏠 பார்வை','💡 மூலம்','💆 சேவை','👐 சிகிச்சையாளர்','💳 கட்டணம்','💰 விலை'],
-  svcNames:{'fb60':'முழு உடல் சிகிச்சை','fb90':'முழு உடல் சிகிச்சை','fb120':'முழு உடல் சிகிச்சை','fl30':'கால் & கீழ் கால்','fl60':'கால் & கீழ் கால்','hn30':'தலை, கழுத்து & தோள்','hn60':'தலை, கழுத்து & தோள்','hn90':'தலை, கழுத்து & தோள்','duo30':'2-in-1 ஷியாட்சு','duo60':'2-in-1 ஷியாட்சு','rec':'மிகவும் பரிந்துரைக்கப்படுகிறது ⭐','new':'புதிய மெனு ✨','fullbody_sub':'தலை, கழுத்து, தோள், முதுகு & கால்','duo_sub':'2 சிகிச்சையாளர்களால் முழு உடல்',},
+  svcNames:{'fb60':'முழு உடல் சிகிச்சை','fb90':'முழு உடல் சிகிச்சை','fb120':'முழு உடல் சிகிச்சை','fl30':'கால் & கீழ் கால்','fl60':'கால் & கீழ் கால்','fl90':'கால் & கீழ் கால்','hn30':'தலை, கழுத்து & தோள்','hn60':'தலை, கழுத்து & தோள்','hn90':'தலை, கழுத்து & தோள்','duo30':'2-in-1 ஷியாட்சு','duo60':'2-in-1 ஷியாட்சு','rec':'மிகவும் பரிந்துரைக்கப்படுகிறது ⭐','new':'புதிய மெனு ✨','fullbody_sub':'தலை, கழுத்து, தோள், முதுகு & கால்','duo_sub':'2 சிகிச்சையாளர்களால் முழு உடல்',},
     btnLookupYes:'✅ உறுதிப்படுத்தி தொடரவும்', btnLookupEdit:'✏️ திருத்தவும்',
     lookupFound:function(n){ return 'மீண்டும் வருக <span class="hi">'+n+'</span>! 🙏<br><br>உங்கள் முந்தைய பதிவு தகவல் கிடைத்தது 👇'; },
   msg:{
@@ -522,7 +523,7 @@ T.hi = {
   steps:['स्वागत','ग्राहक प्रकार','फोन & ईमेल','आगंतुक प्रकार','राष्ट्रीयता','कैसे जाना','सेवा','चिकित्सक','घोषणा','भुगतान','पूर्ण!'],
   namePh:'आपका पूरा नाम', phonePh:'📱 फोन नंबर', emailPh:'📧 ईमेल पता', natPh:'जैसे: भारतीय, श्रीलंकाई…',
   sumLbls:['👤 नाम','🌟 प्रकार','📱 फोन','📧 ईमेल','🌍 राष्ट्रीयता','🏠 आगंतुक','💡 स्रोत','💆 सेवा','👐 चिकित्सक','💳 भुगतान','💰 मूल्य'],
-  svcNames:{'fb60':'पूर्ण शरीर थेरेपी','fb90':'पूर्ण शरीर थेरेपी','fb120':'पूर्ण शरीर थेरेपी','fl30':'पैर और निचला पैर','fl60':'पैर और निचला पैर','hn30':'सिर, गर्दन और कंधे','hn60':'सिर, गर्दन और कंधे','hn90':'सिर, गर्दन और कंधे','duo30':'2-in-1 शियात्सू','duo60':'2-in-1 शियात्सू','rec':'अत्यधिक अनुशंसित ⭐','new':'नया मेनू ✨','fullbody_sub':'सिर, गर्दन, कंधे, पीठ और पैर','duo_sub':'2 चिकित्सकों द्वारा पूर्ण शरीर',},
+  svcNames:{'fb60':'पूर्ण शरीर थेरेपी','fb90':'पूर्ण शरीर थेरेपी','fb120':'पूर्ण शरीर थेरेपी','fl30':'पैर और निचला पैर','fl60':'पैर और निचला पैर','fl90':'पैर और निचला पैर','hn30':'सिर, गर्दन और कंधे','hn60':'सिर, गर्दन और कंधे','hn90':'सिर, गर्दन और कंधे','duo30':'2-in-1 शियात्सू','duo60':'2-in-1 शियात्सू','rec':'अत्यधिक अनुशंसित ⭐','new':'नया मेनू ✨','fullbody_sub':'सिर, गर्दन, कंधे, पीठ और पैर','duo_sub':'2 चिकित्सकों द्वारा पूर्ण शरीर',},
     btnLookupYes:'✅ पुष्टि करें और जारी रखें', btnLookupEdit:'✏️ संपादित करें',
     lookupFound:function(n){ return 'फिर से स्वागत है <span class="hi">'+n+'</span>! 🙏<br><br>आपकी पिछली पंजीकरण जानकारी मिली 👇'; },
   msg:{
@@ -558,7 +559,7 @@ T.zh = {
   steps:['欢迎','客户类型','电话和邮箱','访客类型','国籍','如何了解','服务','治疗师','声明','付款','完成！'],
   namePh:'您的全名', phonePh:'📱 电话号码', emailPh:'📧 电子邮件', natPh:'例如：中国人、日本人…',
   sumLbls:['👤 姓名','🌟 类型','📱 电话','📧 邮箱','🌍 国籍','🏠 访客','💡 来源','💆 服务','👐 治疗师','💳 付款','💰 价格'],
-  svcNames:{'fb60':'全身疗法','fb90':'全身疗法','fb120':'全身疗法','fl30':'脚部和小腿','fl60':'脚部和小腿','hn30':'头、颈和肩膀','hn60':'头、颈和肩膀','hn90':'头、颈和肩膀','duo30':'双人同步指压','duo60':'双人同步指压','rec':'强烈推荐 ⭐','new':'新菜单 ✨','fullbody_sub':'头、颈、肩、背和脚','duo_sub':'两位治疗师的全身疗法',},
+  svcNames:{'fb60':'全身疗法','fb90':'全身疗法','fb120':'全身疗法','fl30':'脚部和小腿','fl60':'脚部和小腿','fl90':'脚部和小腿','hn30':'头、颈和肩膀','hn60':'头、颈和肩膀','hn90':'头、颈和肩膀','duo30':'双人同步指压','duo60':'双人同步指压','rec':'强烈推荐 ⭐','new':'新菜单 ✨','fullbody_sub':'头、颈、肩、背和脚','duo_sub':'两位治疗师的全身疗法',},
     btnLookupYes:'✅ 确认并继续', btnLookupEdit:'✏️ 修改',
     lookupFound:function(n){ return '欢迎回来，<span class="hi">'+n+'</span>！ 🙏<br><br>找到您之前的注册信息 👇'; },
   msg:{
@@ -594,7 +595,7 @@ T.fr = {
   steps:['Bienvenue','Type de client','Téléphone & Email','Type de visiteur','Nationalité','Comment connu','Service','Thérapeute','Déclaration','Paiement','Terminé!'],
   namePh:'Votre nom complet', phonePh:'📱 Numéro de téléphone', emailPh:'📧 Adresse e-mail', natPh:'ex: Français, Sri Lankais…',
   sumLbls:['👤 Nom','🌟 Type','📱 Tél','📧 Email','🌍 Nationalité','🏠 Visiteur','💡 Source','💆 Service','👐 Thérapeute','💳 Paiement','💰 Prix'],
-  svcNames:{'fb60':'Thérapie corps entier','fb90':'Thérapie corps entier','fb120':'Thérapie corps entier','fl30':'Pied et bas de jambe','fl60':'Pied et bas de jambe','hn30':'Tête, nuque & épaules','hn60':'Tête, nuque & épaules','hn90':'Tête, nuque & épaules','duo30':'Shiatsu 2-en-1','duo60':'Shiatsu 2-en-1','rec':'Très recommandé ⭐','new':'Nouveau menu ✨','fullbody_sub':'Tête, nuque, épaules, dos et pieds','duo_sub':'Corps entier par 2 thérapeutes',},
+  svcNames:{'fb60':'Thérapie corps entier','fb90':'Thérapie corps entier','fb120':'Thérapie corps entier','fl30':'Pied et bas de jambe','fl60':'Pied et bas de jambe','fl90':'Pied et bas de jambe','hn30':'Tête, nuque & épaules','hn60':'Tête, nuque & épaules','hn90':'Tête, nuque & épaules','duo30':'Shiatsu 2-en-1','duo60':'Shiatsu 2-en-1','rec':'Très recommandé ⭐','new':'Nouveau menu ✨','fullbody_sub':'Tête, nuque, épaules, dos et pieds','duo_sub':'Corps entier par 2 thérapeutes',},
     btnLookupYes:'✅ Confirmer et continuer', btnLookupEdit:'✏️ Modifier',
     lookupFound:function(n){ return 'Bienvenue à nouveau, <span class="hi">'+n+'</span>! 🙏<br><br>Vos informations précédentes ont été trouvées 👇'; },
   msg:{
@@ -630,7 +631,7 @@ T.de = {
   steps:['Willkommen','Kundentyp','Tel. & E-Mail','Besuchertyp','Nationalität','Wie erfahren','Service','Therapeut','Erklärung','Zahlung','Fertig!'],
   namePh:'Ihr vollständiger Name', phonePh:'📱 Telefonnummer', emailPh:'📧 E-Mail-Adresse', natPh:'z.B. Deutsch, Sri-lankisch…',
   sumLbls:['👤 Name','🌟 Typ','📱 Tel','📧 E-Mail','🌍 Nationalität','🏠 Besucher','💡 Quelle','💆 Service','👐 Therapeut','💳 Zahlung','💰 Preis'],
-  svcNames:{'fb60':'Ganzkörper-Therapie','fb90':'Ganzkörper-Therapie','fb120':'Ganzkörper-Therapie','fl30':'Fuß und Unterschenkel','fl60':'Fuß und Unterschenkel','hn30':'Kopf, Nacken & Schultern','hn60':'Kopf, Nacken & Schultern','hn90':'Kopf, Nacken & Schultern','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Sehr empfohlen ⭐','new':'Neues Menü ✨','fullbody_sub':'Kopf, Nacken, Schultern, Rücken & Fuß','duo_sub':'Ganzkörper von 2 Therapeuten',},
+  svcNames:{'fb60':'Ganzkörper-Therapie','fb90':'Ganzkörper-Therapie','fb120':'Ganzkörper-Therapie','fl30':'Fuß und Unterschenkel','fl60':'Fuß und Unterschenkel','fl90':'Fuß und Unterschenkel','hn30':'Kopf, Nacken & Schultern','hn60':'Kopf, Nacken & Schultern','hn90':'Kopf, Nacken & Schultern','duo30':'2-in-1 Shiatsu','duo60':'2-in-1 Shiatsu','rec':'Sehr empfohlen ⭐','new':'Neues Menü ✨','fullbody_sub':'Kopf, Nacken, Schultern, Rücken & Fuß','duo_sub':'Ganzkörper von 2 Therapeuten',},
     btnLookupYes:'✅ Bestätigen und weiter', btnLookupEdit:'✏️ Bearbeiten',
     lookupFound:function(n){ return 'Willkommen zurück, <span class="hi">'+n+'</span>! 🙏<br><br>Ihre vorherigen Registrierungsdaten wurden gefunden 👇'; },
   msg:{
@@ -666,7 +667,7 @@ T.ko = {
   steps:['환영합니다','고객 유형','전화 & 이메일','방문자 유형','국적','알게 된 경로','서비스','치료사','선언','결제','완료!'],
   namePh:'성함', phonePh:'📱 전화번호', emailPh:'📧 이메일 주소', natPh:'예: 한국인, 일본인…',
   sumLbls:['👤 이름','🌟 유형','📱 전화','📧 이메일','🌍 국적','🏠 방문','💡 출처','💆 서비스','👐 치료사','💳 결제','💰 가격'],
-  svcNames:{'fb60':'전신 테라피','fb90':'전신 테라피','fb120':'전신 테라피','fl30':'발 & 하체','fl60':'발 & 하체','hn30':'머리, 목 & 어깨','hn60':'머리, 목 & 어깨','hn90':'머리, 목 & 어깨','duo30':'2-in-1 지압','duo60':'2-in-1 지압','rec':'강력 추천 ⭐','new':'새 메뉴 ✨','fullbody_sub':'머리, 목, 어깨, 등 & 발','duo_sub':'2명의 치료사에 의한 전신 치료',},
+  svcNames:{'fb60':'전신 테라피','fb90':'전신 테라피','fb120':'전신 테라피','fl30':'발 & 하체','fl60':'발 & 하체','fl90':'발 & 하체','hn30':'머리, 목 & 어깨','hn60':'머리, 목 & 어깨','hn90':'머리, 목 & 어깨','duo30':'2-in-1 지압','duo60':'2-in-1 지압','rec':'강력 추천 ⭐','new':'새 메뉴 ✨','fullbody_sub':'머리, 목, 어깨, 등 & 발','duo_sub':'2명의 치료사에 의한 전신 치료',},
     btnLookupYes:'✅ 확인 후 계속', btnLookupEdit:'✏️ 수정',
     lookupFound:function(n){ return '다시 만나서 반갑습니다, <span class="hi">'+n+'</span>님! 🙏<br><br>이전 등록 정보를 찾았습니다 👇'; },
   msg:{
@@ -1174,13 +1175,14 @@ var SVC_MAP = {
   'fb60':  'Full Body Therapy 60 minutes',
   'fb90':  'Full Body Therapy 90 minutes',
   'fb120': 'Full Body Therapy 120 minutes',
-  'fl30':  'Foot and Lower Leg 30 minutes',
-  'fl60':  'Foot and Lower Leg 60 minutes',
-  'hn30':  'Head Neck and Shoulders 30 minutes',
-  'hn60':  'Head Neck and Shoulders 60 minutes',
-  'hn90':  'Head Neck and Shoulders 90 minutes',
-  'duo30': '2-in-1 Shiatsu 30 minutes',
-  'duo60': '2-in-1 Shiatsu 60 minutes'
+  'fl30':  'Any 30 minutes therapy',
+  'fl60':  'Foot 60 minutes',
+  'fl90':  'Foot 90 minutes',
+  'hn30':  'Any 30 minutes therapy',
+  'hn60':  'Head, Neck, Shoulder & Back 60 minutes',
+  'hn90':  'Head, Neck, Shoulder & Back 90 minutes',
+  'duo30': '2 in 1 Shiatsu Therapy  30 minutes',
+  'duo60': '2 in 1 Shiatsu Therapy  60 minutes'
 };
 
 // ── VISITOR MAP → English (all 9 languages) ──
