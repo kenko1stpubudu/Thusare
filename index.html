@@ -1183,86 +1183,148 @@ var SVC_MAP = {
   'duo60': '2-in-1 Shiatsu 60 minutes'
 };
 
-// ── VISITOR MAP to match Google Form values ──
+// ── VISITOR MAP → English (all 9 languages) ──
 var VISITOR_MAP = {
-  'Tourist':          'Tourist',
-  'Business Visitor': 'Business visitor',
-  '観光客':            'Tourist',
-  'ビジネス訪問者':      'Business visitor',
-  'Resident':         'Resident',
-  '在住者':            'Resident'
+  // EN
+  'Tourist':'Tourist','Business Visitor':'Business visitor','Resident':'Resident',
+  // JA
+  '観光客':'Tourist','ビジネス訪問者':'Business visitor','在住者':'Resident',
+  // SI
+  'සංචාරක':'Tourist','ව්‍යාපාරික':'Business visitor','පදිංචිකරු':'Resident',
+  // TA
+  'சுற்றுலாப் பயணி':'Tourist','வணிக பார்வையாளர்':'Business visitor','குடியிருப்பாளர்':'Resident',
+  // HI
+  'पर्यटक':'Tourist','व्यापारिक आगंतुक':'Business visitor','निवासी':'Resident',
+  // ZH
+  '游客':'Tourist','商务访客':'Business visitor','居民':'Resident',
+  // FR
+  'Touriste':'Tourist',"Visiteur d'affaires":'Business visitor','Résident':'Resident',
+  // DE
+  'Tourist':'Tourist','Geschäftsreisender':'Business visitor','Einwohner':'Resident',
+  // KO
+  '관광객':'Tourist','비즈니스 방문자':'Business visitor','거주자':'Resident'
 };
 
-// ── HEARD MAP ──
+// ── HEARD MAP → English (all 9 languages) ──
 var HEARD_MAP = {
-  'Regular':'Regular','常連':'Regular',
-  'Google':'Google',
-  'Tripadvisor':'Tripadvisor',
-  'Web':'Web','ウェブ':'Web',
-  'Facebook / SNS':'Facebook or SNS','Facebook / SNS':'Facebook or SNS',
-  'Friend':'Friend','友人':'Friend',
-  'Other':'Other','その他':'Other'
+  // EN
+  'Regular':'Regular','Google':'Google','Tripadvisor':'Tripadvisor',
+  'Web':'Web','Facebook / SNS':'Facebook or SNS','Friend':'Friend','Other':'Other',
+  // JA
+  '常連':'Regular','ウェブ':'Web','友人':'Friend','その他':'Other',
+  // SI (uses English options)
+  'නිතර':'Regular','මිතුරෙකු':'Friend','වෙනත්':'Other',
+  // TA
+  'வழக்கமான':'Regular','இணையம்':'Web','நண்பர்':'Friend','மற்றவை':'Other',
+  // HI
+  'नियमित':'Regular','वेब':'Web','मित्र':'Friend','अन्य':'Other',
+  // ZH
+  '常客':'Regular','网络':'Web','朋友':'Friend','其他':'Other',
+  // FR
+  'Habituel':'Regular','Ami':'Friend','Autre':'Other',
+  // DE
+  'Stamm':'Regular','Freund':'Friend','Sonstiges':'Other',
+  // KO
+  '단골':'Regular','웹':'Web','친구':'Friend','기타':'Other'
 };
 
-// ── PAYMENT MAP ──
+// ── PAYMENT MAP → English (all 9 languages) ──
 var PAY_MAP = {
-  'Cash':'Cash','現金':'Cash','මුදල්':'Cash','பணம்':'Cash','नकद':'Cash','现金':'Cash','Espèces':'Cash','Bargeld':'Cash','현금':'Cash',
-  'Card':'Card','カード':'Card',
-  'Online Transfer':'Online Transfer','オンライン振込':'Online Transfer',
-  'QR Pay':'QR Pay','QRコード払い':'QR Pay','QR':'QR Pay','QR码':'QR Pay',
-  'Loyalty Card':'Loyalty Card','ロイヤルティ':'Loyalty Card','会员积分':'Loyalty Card','Carte fidélité':'Loyalty Card','Treuekarte':'Loyalty Card','로열티 카드':'Loyalty Card',
-  'Gift Voucher':'Gift Voucher','ギフト券':'Gift Voucher','礼品券':'Gift Voucher','Bon cadeau':'Gift Voucher','Gutschein':'Gift Voucher','상품권':'Gift Voucher'
+  // EN
+  'Cash':'Cash','Card':'Card','Online Transfer':'Online Transfer',
+  'QR Pay':'QR Pay','Loyalty Card':'Loyalty Card','Gift Voucher':'Gift Voucher',
+  // JA
+  '現金':'Cash','カード':'Card','オンライン振込':'Online Transfer',
+  'QRコード払い':'QR Pay','ロイヤルティ':'Loyalty Card','ギフト券':'Gift Voucher',
+  // SI
+  'මුදල්':'Cash',
+  // TA
+  'பணம்':'Cash','கார்டு':'Card','ஆன்லைன்':'Online Transfer','QR':'QR Pay',
+  // HI
+  'नकद':'Cash','कार्ड':'Card','ऑनलाइन ट्रांसफर':'Online Transfer',
+  // ZH
+  '现金':'Cash','刷卡':'Card','网上转账':'Online Transfer',
+  'QR码':'QR Pay','会员积分':'Loyalty Card','礼品券':'Gift Voucher',
+  // FR
+  'Espèces':'Cash','Carte':'Card','Virement':'Online Transfer',
+  'QR':'QR Pay','Carte fidélité':'Loyalty Card','Bon cadeau':'Gift Voucher',
+  // DE
+  'Bargeld':'Cash','Karte':'Card','Überweisung':'Online Transfer',
+  'Treuekarte':'Loyalty Card','Gutschein':'Gift Voucher',
+  // KO
+  '현금':'Cash','카드':'Card','온라인 이체':'Online Transfer',
+  '로열티 카드':'Loyalty Card','상품권':'Gift Voucher'
 };
+
+// ── CUSTOMER TYPE MAP → English ──
+var TYPE_MAP = {
+  'New':'New','Repeat':'Repeat',
+  // JA
+  '🌟 新規のお客様':'New','🔄 リピーターのお客様':'Repeat',
+  // (all chips store 'New'/'Repeat' internally via pickTypeBtn)
+};
+
+function toEnglish(){
+  return {
+    name:       d.name,
+    type:       d.type==='Repeat' ? 'Repeat' : 'New',
+    phone:      d.phone,
+    email:      (d.email==='—'||d.email==='\u2014') ? '' : d.email,
+    visitor:    VISITOR_MAP[d.visitor]  || d.visitor  || '',
+    nationality: (d.nationality==='—'||d.nationality==='\u2014') ? '' : d.nationality,
+    heardFrom:  HEARD_MAP[d.heardFrom]  || d.heardFrom || '',
+    service:    SVC_MAP[d.service.key]  || d.service.label,
+    therapist:  d.therapist,
+    payment:    PAY_MAP[d.payment]      || d.payment,
+  };
+}
 
 function buildFormURL(){
   var base='https://docs.google.com/forms/d/e/1FAIpQLScKtigPoaln2lA-6U24CUL4ofaaYk2CUSG0hjYtyAL8RJ5_6A/viewform';
-  var isR=d.type==='Repeat';
-
+  var en=toEnglish();
+  var isR=en.type==='Repeat';
   function enc(v){ return encodeURIComponent(v||''); }
 
-  var svcVal = SVC_MAP[d.service.key] || d.service.label;
-  var visitorVal = VISITOR_MAP[d.visitor] || d.visitor || '';
-  var heardVal = HEARD_MAP[d.heardFrom] || d.heardFrom || '';
-  var payVal = PAY_MAP[d.payment] || d.payment;
-
   var url = base
-    +'?entry.1000027='+enc(d.name)
-    +'&entry.1000057='+enc(d.type)
-    +'&entry.1738860595='+enc(svcVal)
-    +'&entry.1025460438='+enc(d.therapist)
+    +'?entry.1000027='+enc(en.name)
+    +'&entry.1000057='+enc(en.type)
+    +'&entry.1738860595='+enc(en.service)
+    +'&entry.1025460438='+enc(en.therapist)
     +'&entry.1000020=YES'
-    +'&entry.513284361='+enc(payVal);
+    +'&entry.513284361='+enc(en.payment);
 
   if(!isR){
-    url += '&entry.967112212='+enc(d.phone)
-         +'&entry.604448062='+enc(d.email==='—'?'':d.email)
-         +'&entry.1830763802='+enc(visitorVal)
-         +'&entry.2055232012='+enc(d.nationality==='—'?'':d.nationality)
-         +'&entry.238597302='+enc(heardVal);
+    url += '&entry.967112212='+enc(en.phone)
+         +'&entry.604448062='+enc(en.email)
+         +'&entry.1830763802='+enc(en.visitor)
+         +'&entry.2055232012='+enc(en.nationality)
+         +'&entry.238597302='+enc(en.heardFrom);
   }
   return url;
 }
 
+
 function buildWAMsg(){
-  var isR=d.type==='Repeat';
+  var en=toEnglish();
+  var isR=en.type==='Repeat';
   var t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
   var dt=new Date().toLocaleDateString('en-GB');
   var msg='*NEW REGISTRATION - Thusare Talking Hands*\n';
   msg+='--------------------------------\n';
-  msg+='*Name:* '+d.name+'\n';
-  msg+='*Type:* '+d.type+' Customer\n';
+  msg+='*Name:* '+en.name+'\n';
+  msg+='*Type:* '+en.type+' Customer\n';
   if(!isR){
-    msg+='*Phone:* '+d.phone+'\n';
-    if(d.email&&d.email!=='—') msg+='*Email:* '+d.email+'\n';
-    msg+='*Visitor:* '+d.visitor+'\n';
-    if(d.nationality&&d.nationality!=='—') msg+='*Nationality:* '+d.nationality+'\n';
-    msg+='*Heard from:* '+d.heardFrom+'\n';
+    msg+='*Phone:* '+en.phone+'\n';
+    if(en.email) msg+='*Email:* '+en.email+'\n';
+    msg+='*Visitor:* '+en.visitor+'\n';
+    if(en.nationality) msg+='*Nationality:* '+en.nationality+'\n';
+    msg+='*Heard from:* '+en.heardFrom+'\n';
   }
   msg+='--------------------------------\n';
-  msg+='*Service:* '+d.service.label+'\n';
+  msg+='*Service:* '+en.service+'\n';
   msg+='*Price:* '+d.service.price+'\n';
-  msg+='*Therapist:* '+d.therapist+'\n';
-  msg+='*Payment:* '+d.payment+'\n';
+  msg+='*Therapist:* '+en.therapist+'\n';
+  msg+='*Payment:* '+en.payment+'\n';
   msg+='--------------------------------\n';
   msg+='Time: '+t+' | '+dt;
   return encodeURIComponent(msg);
